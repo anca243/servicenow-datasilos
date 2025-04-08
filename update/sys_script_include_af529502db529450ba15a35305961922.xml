@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns all silos that the user belongs to, filtered by the type of the group in the silo.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetSilosFromUserByTypes</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetSilosFromUserByTypes(strUserSysId, aTypes)
 {
 	var RenderValue = x_snc_devtools.RenderValue;

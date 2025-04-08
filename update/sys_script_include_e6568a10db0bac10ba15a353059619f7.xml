@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Retrieves the value of the ghost field from a record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordGetGhostValue</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordGetGhostValue(record)
 {
 	return x_snc_devtools.GetBoolValue(record.getValue(GetScopeFromRecord(record)+'_ghost'));

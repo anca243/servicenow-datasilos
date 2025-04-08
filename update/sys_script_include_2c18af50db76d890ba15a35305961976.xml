@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns the config object based on the actual configuration in the instance.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetConfigInstance</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetConfigInstance()
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Checks if the given record would pass the DataSilos filter for a given user considering the user's roles. The function may return true if DataSilos does not filter the record, but the user might still not be able to access it due to other security contraints (e.g. missing roles etc.).</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordCheckAccess</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordCheckAccess(grRecord,strUserSysId)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

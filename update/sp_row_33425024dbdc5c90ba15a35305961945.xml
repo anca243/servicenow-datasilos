@@ -2,6 +2,7 @@
     <sp_row action="INSERT_OR_UPDATE">
         <class_name/>
         <order>1</order>
+        <semantic_tag/>
         <sp_column/>
         <sp_container display_value="Test Simple List - Container 1">431d7676cb03020000f8d856634c9ccb</sp_container>
         <sys_class_name>sp_row</sys_class_name>

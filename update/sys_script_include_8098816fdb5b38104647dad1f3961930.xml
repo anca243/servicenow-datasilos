@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function returns true if the current user has the manager role. It will return false for admin users who do not have the role explicitly.</description>
+        <mobile_callable>false</mobile_callable>
         <name>IsUserManager</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function IsUserManager(strUserSysId)
 {
 	var IsUserHasRoleExactly = x_snc_devtools.IsUserHasRoleExactly;

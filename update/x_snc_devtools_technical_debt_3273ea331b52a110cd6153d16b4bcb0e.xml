@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_devtools_technical_debt">
     <x_snc_devtools_technical_debt action="INSERT_OR_UPDATE">
+        <description/>
         <id>updateset</id>
         <short_description>Manual refers to using UpdateSets</short_description>
         <switch>false</switch>

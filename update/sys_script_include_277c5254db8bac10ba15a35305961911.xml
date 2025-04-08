@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Sets the value of the supervisor whitelist field of a record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordSetSupervisorWhitelistValue</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordSetSupervisorWhitelistValue(record, strValue)
 {
 	record[GetScopeFromRecord(record)+'_supervisor_whitelist'] = x_snc_devtools.GetStringValue(strValue);

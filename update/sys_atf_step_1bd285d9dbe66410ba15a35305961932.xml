@@ -14,7 +14,6 @@ See the documentation for Test Design Considerations</description>
         <mugshots_cache_json/>
         <notes>Set security clearance level to 2 for user MANAGER</notes>
         <order>4</order>
-        <snapshot/>
         <step_config display_value="Record Update">17a72288df60220062fe6c7a4df26397</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by>admin</sys_created_by>

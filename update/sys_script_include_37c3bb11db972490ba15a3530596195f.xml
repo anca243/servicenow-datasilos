@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Render a html fragment to provide the current status of DataSilos</description>
+        <mobile_callable>false</mobile_callable>
         <name>HtmlRenderStatus</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function HtmlRenderStatus()
 {
 	var RenderValue = x_snc_devtools.RenderValue;

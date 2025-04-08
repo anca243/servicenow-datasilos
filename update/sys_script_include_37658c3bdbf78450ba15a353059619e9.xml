@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>This function serves as the main entry point to the DataSilos application and should be called from the script block of a business rule which responds to insert, update and query operations.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ExecuteBusinessRule</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function ExecuteBusinessRule(current, previous)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

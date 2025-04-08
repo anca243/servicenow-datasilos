@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Retrieves the value of the security clearance field from a record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordGetSecurityClearanceValue</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordGetSecurityClearanceValue(record)
 {
 	return x_snc_devtools.GetIntegerValue(record.getValue(GetScopeFromRecord(record)+'_security_clearance'));

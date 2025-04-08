@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Checks if the given record would pass the DataSilos filter for a given user but only strictly based on the query filter, ignoring the user's roles. The function may return true if DataSilos does not filter the record, but the user might still not be able to access it due to other security contraints (e.g. missing roles etc.). The function may return false, but if the user has the admin or sentinel role, they may still access the record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordCheckFilter</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordCheckFilter(grRecord,strUserSysId)
 {
 	var IsValidRecord = x_snc_devtools.IsValidRecord;

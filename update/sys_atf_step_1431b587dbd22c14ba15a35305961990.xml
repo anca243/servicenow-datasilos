@@ -9,7 +9,6 @@
         <mugshots_cache_json/>
         <notes/>
         <order>10</order>
-        <snapshot/>
         <step_config display_value="DataSilos - Check table implementation">88b932e8db582810ba15a35305961982</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -57,4 +56,5 @@
         <value>sc_task</value>
         <variable display_value="Table">ae5bba2cdb582810ba15a3530596193b</variable>
     </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_88b932e8db582810ba15a35305961982^id=1431b587dbd22c14ba15a35305961990"/>
 </record_update>

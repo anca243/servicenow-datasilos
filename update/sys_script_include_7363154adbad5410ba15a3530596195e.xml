@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns an array containing the names of all supported tables.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetAllSupportedTables</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetAllSupportedTables()
 {
 	var GetKeys = x_snc_devtools.GetKeys;

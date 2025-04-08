@@ -9,7 +9,9 @@
 Related records are parent records and other records associated to the given record.&#13;
 Any visibility whitelisting already applied to the given record can then also be applied to the related records.&#13;
 The identification of related records is supported for the tables natively supported by DataSilos and through the use of the DataSilos extension point. </description>
+        <mobile_callable>false</mobile_callable>
         <name>GetRelatedRecords</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetRelatedRecords(record)
 {
 	var IsValidRecord = x_snc_devtools.IsValidRecord;

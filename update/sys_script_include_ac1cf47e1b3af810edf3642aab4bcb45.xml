@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function turns an existing scoped app into a DataSilos plugin app and adds all components required to support a given set of tables.</description>
+        <mobile_callable>false</mobile_callable>
         <name>AppBuilder</name>
+        <sandbox_callable>false</sandbox_callable>
         <script>function AppBuilder(strAppSysIdOrScopeName,aTables,strAppMenuSeparator,nAppMenuOrderStart)&#13;
 {&#13;
 /*&#13;

@@ -8,7 +8,6 @@
         <mugshots_cache_json/>
         <notes/>
         <order>20</order>
-        <snapshot/>
         <step_config display_value="DataSilos - Log test data">297629a31b2aac10a89720a8ec4bcb06</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by>admin</sys_created_by>

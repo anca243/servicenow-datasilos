@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_restricted_caller_access">
     <sys_restricted_caller_access action="INSERT_OR_UPDATE">
+        <description/>
         <operation>read</operation>
+        <rca_type/>
         <source>fc26194edb073c504647dad1f3961930</source>
         <source_scope display_value="DevTools WORK IN PROGRESS">d689f6901bd38450a89720a8ec4bcbfd</source_scope>
         <source_table>sys_script_include</source_table>

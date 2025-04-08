@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns all silos that the user belongs to. </description>
+        <mobile_callable>false</mobile_callable>
         <name>GetSilosFromUser</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetSilosFromUser(strUserSysId)
 {
 	return GetSilosFromUserByTypes(strUserSysId,[]);

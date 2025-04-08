@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function populates the whitelists of a given record and its related records. The function is used by ExecuteBusinessRule when a record is being updated.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordUpdate</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordUpdate(record)
 {
 	var RenderValue = x_snc_devtools.RenderValue;
@@ -75,6 +77,5 @@
         <sys_update_name>sys_script_include_bb00dce21b9490d0a89720a8ec4bcbad</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2022-04-25 12:41:03</sys_updated_on>
-
     </sys_script_include>
 </record_update>

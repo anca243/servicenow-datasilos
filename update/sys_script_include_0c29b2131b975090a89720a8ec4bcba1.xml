@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Inherits the visibility of the given record from related records.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordInheritVisibilityFromRelatedRecords</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordInheritVisibilityFromRelatedRecords(record)
 {
 	var GetArrayValue = x_snc_devtools.GetArrayValue;

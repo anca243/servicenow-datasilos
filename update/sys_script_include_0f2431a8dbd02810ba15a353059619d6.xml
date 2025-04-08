@@ -8,7 +8,9 @@
         <description>The function analyses the given query and either considers it as "expensive" and returns true, or not and returns false.&#13;
 Expensive queries are likely to have a significant performance impact when combined with datasilos based filtering.&#13;
 Configuration allows to skip the query based filtering in case of expensive queries and to enforce filtering based on ACLs only.</description>
+        <mobile_callable>false</mobile_callable>
         <name>IsExpensiveQuery</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function IsExpensiveQuery(strTable,strEncodedQuery,strUserSysId)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

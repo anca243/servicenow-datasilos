@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Performs an analysis on a list of users against a list of records. Can these users see these records?</description>
+        <mobile_callable>false</mobile_callable>
         <name>AccessAnalysis</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[/*
 // Access Analysis Template Code:
 	

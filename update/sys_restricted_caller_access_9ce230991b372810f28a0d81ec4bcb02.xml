@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_restricted_caller_access">
     <sys_restricted_caller_access action="INSERT_OR_UPDATE">
+        <description/>
         <operation>read</operation>
+        <rca_type/>
         <source>0c51b4191b372810f28a0d81ec4bcb62</source>
         <source_scope display_value="">044532c1db429410ba15a35305961966</source_scope>
         <source_table>sys_script_include</source_table>
@@ -18,7 +20,7 @@
         <sys_update_name>sys_restricted_caller_access_9ce230991b372810f28a0d81ec4bcb02</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2021-04-27 14:13:09</sys_updated_on>
-        <target name="x_snc_datasilos_datasilos" target_table="sys_db_object">7ea641c2dbd44110bcced03cd396198b</target>
+        <target name="x_snc_datasilos_datasilos" target_table="sys_db_object">a5b3d8de939a1210ae97b4aa6aba1095</target>
         <target_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</target_scope>
         <target_table>sys_db_object</target_table>
         <target_type>1</target_type>

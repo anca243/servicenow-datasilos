@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Sets the value of the ghost field of a record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordSetGhostValue</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordSetGhostValue(record, bValue)
 {
 	record[GetScopeFromRecord(record)+'_ghost'] = x_snc_devtools.GetBoolValue(bValue);

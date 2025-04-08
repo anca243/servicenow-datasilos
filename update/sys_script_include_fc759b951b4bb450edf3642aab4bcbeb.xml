@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns a modified, DataSilos-compliant ACL script based on a given script.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ModifyACLScript</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function ModifyACLScript(strScript)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

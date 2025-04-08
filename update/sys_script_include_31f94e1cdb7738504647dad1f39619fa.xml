@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Performs an access analysis for a single user on a single record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>AccessAnalysisForUserAndRecord</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function AccessAnalysisForUserAndRecord(strUserSysId, strTable, strRecordSysId)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Distributes the visibility of the given record to all related records.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordDistributeVisibilityToRelatedRecords</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordDistributeVisibilityToRelatedRecords(record)
 {
 	var GetArrayValue = x_snc_devtools.GetArrayValue;

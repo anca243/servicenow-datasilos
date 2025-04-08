@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function extends the whitelisting of the given record based on the record and a ist of types of datasilos-to-group associations. It considers the configured "trigger" fields - i.e. the fields that contain references to groups that should be considered to extend visibility.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordUpdateWhitelistsFromGroupsInTriggerFieldsByTypes</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordUpdateWhitelistsFromGroupsInTriggerFieldsByTypes(record,aTypes)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

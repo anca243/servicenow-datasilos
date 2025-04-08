@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>ExecuteACL is the entry point function used within script blocks of ACLs.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ExecuteACL</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function ExecuteACL(record)
 {
 	var RenderValue = x_snc_devtools.RenderValue;

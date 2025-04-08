@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Set the defaults for all system properties.</description>
+        <mobile_callable>false</mobile_callable>
         <name>AppSetDefaults</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function AppSetDefaults()
 {
 	function SetPropertiesFromObject(vConfig,strPrefix)

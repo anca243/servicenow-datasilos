@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns true if the given ACL script is supporting DataSilos filtering correctly.</description>
+        <mobile_callable>false</mobile_callable>
         <name>CheckACLScript</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function CheckACLScript(strScript)
 {
 	var StringRemoveCharacters = x_snc_devtools.StringRemoveCharacters;

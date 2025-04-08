@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Creates a name for a DataSilos business rule for a given table that does not exceed 40 characters but is very likely collision-free. </description>
+        <mobile_callable>false</mobile_callable>
         <name>GetBusinessRuleName</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetBusinessRuleName(strTable)
 {
 	return 'DataSilos - '+x_snc_devtools.GetShortUniqueString(strTable,40-12);

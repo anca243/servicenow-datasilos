@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The Maintenance function is used to update records in supported tables based on the current values in fields. Essentially the Maintenance function iterates over records in the table specified by the given GlideRecord object and simulates a change to each record. It is used to initialize records after initial installation or when specific silo configuration changes were made. It is recommended to trigger the RecordMaintenance function on a regular basis. A GlideRecord object must be provided to choose a specific table and a predefined filter. </description>
+        <mobile_callable>false</mobile_callable>
         <name>Maintenance</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function Maintenance(grRecords, strTopic)
 {
 	var RecordBulkProcessor = x_snc_devtools.RecordBulkProcessor;

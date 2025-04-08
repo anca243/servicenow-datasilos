@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Generates a hexadecimal hash based on a record's whitelist and other visibility rules.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordGetVisibilityHash</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordGetVisibilityHash(record)
 {
 	var IsValidRecord = x_snc_devtools.IsValidRecord;

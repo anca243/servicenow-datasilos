@@ -2,7 +2,6 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="x_snc_datasilos_fulfiller_whitelist" table="sc_req_item">
         <active>true</active>
         <array>false</array>
-        <array_denormalized>false</array_denormalized>
         <attributes>edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true</attributes>
         <audit>false</audit>
         <calculation>&lt;![CDATA[ (function calculatedFieldValue(current) { // Add your code here return ''; // return the calculated value })(current); ]]&gt;</calculation>
@@ -25,6 +24,7 @@
         <element>x_snc_datasilos_fulfiller_whitelist</element>
         <element_reference>false</element_reference>
         <foreign_database/>
+        <formula/>
         <function_definition/>
         <function_field>false</function_field>
         <internal_type display_value="">glide_list</internal_type>
@@ -42,14 +42,11 @@
         <reference_qual/>
         <reference_qual_condition/>
         <reference_type/>
-        <sizeclass/>
         <spell_check>false</spell_check>
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-09-28 11:50:16</sys_created_on>
-        <sys_id>97a681c2dbd44110bcced03cd396192b</sys_id>
-        <sys_mod_count>0</sys_mod_count>
         <sys_name>DataSilos Fulfiller Whitelist</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
@@ -64,6 +61,7 @@
         <use_dynamic_default>false</use_dynamic_default>
         <use_reference_qualifier>simple</use_reference_qualifier>
         <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
         <widget/>
         <write_roles/>
         <xml_view>false</xml_view>

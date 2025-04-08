@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns the silo record based on a given name if it exists, otherwise false.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetSiloRecordByName</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetSiloRecordByName(strName)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

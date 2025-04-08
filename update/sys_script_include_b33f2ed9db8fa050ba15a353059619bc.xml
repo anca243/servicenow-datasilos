@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The RecordMaintenance function is used to update a record in a supported table during a maintenance operation. It will update the whitelists based on the current values in fields. It is used to initialize records after initial installation or when specific silo configuration changes were made.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordMaintenance</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordMaintenance(record)
 {
 	var strWhitelistHashOld = RecordGetVisibilityHash(record);

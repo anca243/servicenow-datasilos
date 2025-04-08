@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function maintains database indexes for the DataSilos specific fields on supported tables. It ensures that the "last maintenance" field is indexed so that the maintenance job can quickly identify the record that has not been maintained for the longest period of time.</description>
+        <mobile_callable>false</mobile_callable>
         <name>MaintenanceDatabaseIndexes</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function MaintenanceDatabaseIndexes()
 {
 	var GetBoolValue = x_snc_devtools.GetBoolValue;

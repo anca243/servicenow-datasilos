@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>When inserting or updating sysapproval_approver records the group of the assigned approver user gains access to the associated task. </description>
+        <mobile_callable>false</mobile_callable>
         <name>OnApproval</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function OnApproval(record)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

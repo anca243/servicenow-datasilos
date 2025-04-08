@@ -5,9 +5,11 @@
         <description>Checks if there is test data left from previous test executions.&#13;
 In case there is test data left, please go to the corresponding table and delete the entries whose names start with "_ATF_DATASILOS_"!</description>
         <enable_parameterized_testing>false</enable_parameterized_testing>
+        <fail_on_server_error>false</fail_on_server_error>
         <name>DataSilos - Test data sanity</name>
         <parameters/>
         <remember/>
+        <sn_atf_tg_generated>false</sn_atf_tg_generated>
         <sys_class_name>sys_atf_test</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-11-23 12:35:10</sys_created_on>

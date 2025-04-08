@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function returns the sys_id of a silo based on a given silo name. It returns false if no silo can be found.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetSiloByName</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetSiloByName(strName)
 {
 	var IsValidRecord = x_snc_devtools.IsValidRecord;

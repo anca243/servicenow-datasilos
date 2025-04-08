@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function adds a silo (identified by a sys_id) to the supervisor whitelist field of a given record. If the silo is already whitelisted, no change is made.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordAddSiloToSupervisorWhitelist</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordAddSiloToSupervisorWhitelist(record, strNewSiloSysId)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

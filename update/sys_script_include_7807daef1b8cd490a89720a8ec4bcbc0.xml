@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Creates test data records for various scenarios. Do not use on production environments!</description>
+        <mobile_callable>false</mobile_callable>
         <name>CreateTestData</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function CreateTestData(strPrefix)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

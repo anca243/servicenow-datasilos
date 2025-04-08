@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function updates and extends the group and datasilos whitelisting based on the given group and the type of the datasilo-to-group associations. </description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordUpdateWhitelistsFromGroupByTypes</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordUpdateWhitelistsFromGroupByTypes(record,strGroupSysId,aTypes)
 {
 	var RenderValue = x_snc_devtools.RenderValue;

@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>true</client_callable>
         <description>The DataSilosClientAPI exposes functions to be called from the bowser.</description>
+        <mobile_callable>false</mobile_callable>
         <name>DataSilosClientAPI</name>
+        <sandbox_callable>true</sandbox_callable>
         <script><![CDATA[var DataSilosClientAPI = Class.create();
 DataSilosClientAPI.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 {

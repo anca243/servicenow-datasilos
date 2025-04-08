@@ -11,7 +11,6 @@ Confirm the record was successfully updated</description>
         <mugshots_cache_json/>
         <notes>Assign incident TEST to group BETA</notes>
         <order>13</order>
-        <snapshot/>
         <step_config display_value="Record Update">17a72288df60220062fe6c7a4df26397</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by>admin</sys_created_by>

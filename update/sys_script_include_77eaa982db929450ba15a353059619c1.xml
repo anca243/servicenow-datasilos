@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns all silos that contain a given group.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetSilosFromGroupByTypes</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetSilosFromGroupByTypes(strGroupSysId,aTypes)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

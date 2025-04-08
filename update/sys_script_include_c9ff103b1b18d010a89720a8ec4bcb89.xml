@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function returns true if the given table is supported by the DataSilos application.</description>
+        <mobile_callable>false</mobile_callable>
         <name>IsTableSupported</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function IsTableSupported(strTable)
 {
 	var ArrayValueExists = x_snc_devtools.ArrayValueExists;

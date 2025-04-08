@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns an object with current status information about database performance.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetStatusPerformance</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetStatusPerformance()
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;

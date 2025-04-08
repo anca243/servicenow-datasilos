@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Retrieves the value of the supervisor whitelist field from a record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordGetSupervisorWhitelistValue</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordGetSupervisorWhitelistValue(record)
 {
 	return x_snc_devtools.GetStringValue(record.getValue(GetScopeFromRecord(record)+'_supervisor_whitelist'));

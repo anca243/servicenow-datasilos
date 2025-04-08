@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Maintain existing ACLs and create missing ACLs required to protect the tables in scope. </description>
+        <mobile_callable>false</mobile_callable>
         <name>MaintenanceACLs</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function MaintenanceACLs()
 {
 	var bSuccess = true;

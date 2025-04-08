@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The class DataSilosTestDataAPI contains functions to create test data which is required for the many ATF tests that validate the DataSilos Application.</description>
+        <mobile_callable>false</mobile_callable>
         <name>DataSilosTestDataAPI</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var DataSilosTestDataAPI = Class.create();
 DataSilosTestDataAPI.prototype = Object.extendsObject(x_snc_devtools.TestDataAPI,
 {
