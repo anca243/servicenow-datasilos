@@ -75,7 +75,7 @@
 	<ul>
 		<g2:no_escape>$[
 			docapi.RenderSystemRequirements(
-				'Tokyo, Utah',
+				'Xanadu,Yokohama',
 				true,
 				AppGetDependencies());
 		]</g2:no_escape>	
@@ -540,6 +540,8 @@ DataSilos - incident_task - cross-silo
 
 	<h3>3.9.0 - 2025-TODO</h3>
 	<ol>
+		<li>DataSilos is fully tested with Xanadu and Yokohama.</li>
+		<li>Tokyo and Utah are no longer actively supported.</li>
 		<li>Renamed menu item "Data Silos" to "Silos" for consistency.</li>
 		<li>Added menu item for "Groups".</li>
 		<li>Removed the deactivation of the OOTB business rule that prevents before query business rules on cross-scope tables from MaintenanceDatabaseViews() as this is already done by DevTools' AppInstall() script.</li>
@@ -949,14 +951,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>686</sys_mod_count>
+        <sys_mod_count>687</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-28 08:52:47</sys_updated_on>
+        <sys_updated_on>2025-04-28 08:57:27</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
