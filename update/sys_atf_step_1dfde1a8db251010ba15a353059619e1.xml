@@ -3,9 +3,9 @@
         <active>true</active>
         <copied_from/>
         <description>Validate there is at least one record in 'sys_user' matching query:
-Name = _ATF_DATASILOS_ALPHA_FULFILLER
+Name = Test _ATF_DATASILOS_ALPHA_FULFILLER
 With a failure timeout of 5 Seconds</description>
-        <display_name>Record Query</display_name>
+        <display_name>Record Query (Deprecated)</display_name>
         <inputs/>
         <mugshots_cache_json/>
         <notes>Get user ALPHA_FULFILLER</notes>
@@ -15,14 +15,14 @@ With a failure timeout of 5 Seconds</description>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-06-18 18:01:43</sys_created_on>
         <sys_id>1dfde1a8db251010ba15a353059619e1</sys_id>
-        <sys_mod_count>9</sys_mod_count>
-        <sys_name>Record Query</sys_name>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Record Query (Deprecated)</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_1dfde1a8db251010ba15a353059619e1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-11-03 16:37:19</sys_updated_on>
+        <sys_updated_on>2025-04-28 08:13:17</sys_updated_on>
         <table>sys_user</table>
         <test display_value="DataSilos - incident - opener, caller and sentinel">cf3a6d64db251010ba15a353059619f1</test>
         <timeout>1970-01-01 00:00:05</timeout>
@@ -79,10 +79,10 @@ With a failure timeout of 5 Seconds</description>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-06-18 18:01:44</sys_created_on>
         <sys_id>f91ea5a8db251010ba15a35305961950</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-11-03 16:37:19</sys_updated_on>
-        <value>name=_ATF_DATASILOS_ALPHA_FULFILLER^EQ</value>
+        <sys_updated_on>2025-04-28 08:13:17</sys_updated_on>
+        <value>name=Test _ATF_DATASILOS_ALPHA_FULFILLER^EQ</value>
         <variable display_value="Conditions">cf167c405f30220012b44adb7f46660d</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_0270b8005f30220012b44adb7f46666a^id=1dfde1a8db251010ba15a353059619e1"/>
