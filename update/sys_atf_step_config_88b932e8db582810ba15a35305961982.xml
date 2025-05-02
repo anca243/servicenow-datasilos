@@ -78,7 +78,6 @@ generateDescription();]]></description_generator>
 		grBR.addQuery('advanced','=','true');
 		grBR.addQuery('script','CONTAINS','x_snc_datasilos.ExecuteBusinessRule(current, previous);');
 		grBR.addQuery('when','=','before');
-		grBR.addQuery('order','=',10000);
 		grBR.addQuery('sys_scope','=',strAppSysId);
 		grBR.addQuery('collection','=',strTable);
 		grBR.query();
@@ -474,8 +473,7 @@ generateDescription();]]></description_generator>
 		grSA.addQuery('run_dayofweek','=',1);
 		grSA.addQuery('run_period','=','1970-01-01 00:10:00');
 		grSA.addQuery('run_type','=','periodically');
-		grSA.addQuery('script','STARTSWITH','var grRecords = new GlideRecord(\''+strTable+'\');');
-		grSA.addQuery('script','ENDSWITH','Maintenance(grRecords);');
+		grSA.addQuery('script','STARTSWITH',"x_snc_datasilos.Maintenance('"+strTable+"');");
 		grSA.addQuery('script','DOES NOT CONTAIN','RecordMaintenance');
 		grSA.query();
 		if (grSA.getRowCount() != 1)
@@ -642,14 +640,14 @@ generateDescription();]]></description_generator>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-11-02 16:24:42</sys_created_on>
         <sys_id>88b932e8db582810ba15a35305961982</sys_id>
-        <sys_mod_count>135</sys_mod_count>
+        <sys_mod_count>137</sys_mod_count>
         <sys_name>DataSilos - Check table implementation</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_config_88b932e8db582810ba15a35305961982</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-12 15:31:36</sys_updated_on>
+        <sys_updated_on>2025-05-02 13:53:21</sys_updated_on>
         <template_reminder>TBD</template_reminder>
         <type display_value="Test Step" name="sys_atf_step">844d8f97d1e302104f34ba60d8b7c1dc</type>
         <wizard_redirect/>
@@ -657,4 +655,15 @@ generateDescription();]]></description_generator>
     <sys_translated_text action="delete_multiple" query="documentkey=88b932e8db582810ba15a35305961982"/>
     <sys_variable_value action="delete_multiple" query="document_key=88b932e8db582810ba15a35305961982"/>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_88b932e8db582810ba15a35305961982^id=88b932e8db582810ba15a35305961982"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>88b932e8db582810ba15a35305961982</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-02 13:49:37</sys_created_on>
+        <sys_id>31b856419355ea10959b7fda2bba1043</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-02 13:49:37</sys_updated_on>
+        <table>sys_atf_step_config</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
