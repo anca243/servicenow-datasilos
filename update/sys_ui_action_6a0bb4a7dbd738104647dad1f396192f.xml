@@ -28,9 +28,9 @@
         <list_style/>
         <messages/>
         <name>DataSilos Access Analysis</name>
-        <onclick>onDataSilosAccessAnalysis()</onclick>
+        <onclick>onClickDataSilosAccessAnalysis()</onclick>
         <order>25000</order>
-        <script><![CDATA[function onDataSilosAccessAnalysis()
+        <script><![CDATA[function onClickDataSilosAccessAnalysis()
 {
 
 	var strTable = GetCurrentRecordTableName();
@@ -82,17 +82,28 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>6a0bb4a7dbd738104647dad1f396192f</sys_id>
-        <sys_mod_count>75</sys_mod_count>
+        <sys_mod_count>76</sys_mod_count>
         <sys_name>DataSilos Access Analysis</sys_name>
         <sys_overrides/>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_action_6a0bb4a7dbd738104647dad1f396192f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-26 06:32:51</sys_updated_on>
+        <sys_updated_on>2025-04-28 07:44:26</sys_updated_on>
         <table>global</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
     </sys_ui_action>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>6a0bb4a7dbd738104647dad1f396192f</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-28 07:44:25</sys_created_on>
+        <sys_id>d1ce98bb934de210959b7fda2bba10c5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-28 07:44:25</sys_updated_on>
+        <table>sys_ui_action</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

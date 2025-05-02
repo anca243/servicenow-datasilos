@@ -11,7 +11,6 @@ With a failure timeout of 5 Seconds</description>
         <mugshots_cache_json/>
         <notes>Check if change request TEST_1 has a non-empty whitelist</notes>
         <order>6</order>
-        <snapshot/>
         <step_config display_value="Record Query (Deprecated)">0270b8005f30220012b44adb7f46666a</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -19,9 +18,9 @@ With a failure timeout of 5 Seconds</description>
         <sys_id>fe3aaf181b699010a89720a8ec4bcbca</sys_id>
         <sys_mod_count>19</sys_mod_count>
         <sys_name>Record Query</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_fe3aaf181b699010a89720a8ec4bcbca</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2020-07-04 00:13:36</sys_updated_on>
@@ -87,4 +86,5 @@ With a failure timeout of 5 Seconds</description>
         <value>0</value>
         <variable display_value="Enforce security">9459c28673103300f660eeadfff6a7dd</variable>
     </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_0270b8005f30220012b44adb7f46666a^id=fe3aaf181b699010a89720a8ec4bcbca"/>
 </record_update>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="m2m Data Silos to Data Silos" max_length="40" name="x_snc_datasilos_m2m_datasilos_datasilos" sizeclass="5" type="collection">
+    <element db_object_id="e1b3d8de939a1210ae97b4aa6aba106e" label="m2m Data Silos to Data Silos" max_length="40" name="x_snc_datasilos_m2m_datasilos_datasilos" type="collection">
         <element attributes="encode_utf8=false" label="Sub Silo" mandatory="true" max_length="32" name="datasilo_sub" reference="x_snc_datasilos_datasilos" type="reference"/>
         <element attributes="encode_utf8=false" label="Super Silo" mandatory="true" max_length="32" name="datasilo_super" reference="x_snc_datasilos_datasilos" type="reference"/>
         <index name="index">
-            <element name="datasilo_super"/>
+            <element name="datasilo_sub"/>
         </index>
         <index name="index2">
-            <element name="datasilo_sub"/>
+            <element name="datasilo_super"/>
         </index>
     </element>
 </database>

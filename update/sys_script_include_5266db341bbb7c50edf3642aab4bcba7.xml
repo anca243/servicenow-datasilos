@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Creates a name for a DataSilos business rule for a given table that does not exceed 40 characters but is very likely collision-free. </description>
+        <mobile_callable>false</mobile_callable>
         <name>GetBusinessRuleName</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetBusinessRuleName(strTable)
 {
 	return 'DataSilos - '+x_snc_devtools.GetShortUniqueString(strTable,40-12);
@@ -15,13 +17,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-11-11 09:00:47</sys_created_on>
         <sys_id>5266db341bbb7c50edf3642aab4bcba7</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>GetBusinessRuleName</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
-        <sys_policy>read</sys_policy>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_5266db341bbb7c50edf3642aab4bcba7</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-11-19 12:35:39</sys_updated_on>
+        <sys_updated_on>2025-05-02 14:17:36</sys_updated_on>
     </sys_script_include>
 </record_update>

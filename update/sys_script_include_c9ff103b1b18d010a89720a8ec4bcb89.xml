@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function returns true if the given table is supported by the DataSilos application.</description>
+        <mobile_callable>false</mobile_callable>
         <name>IsTableSupported</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function IsTableSupported(strTable)
 {
 	var ArrayValueExists = x_snc_devtools.ArrayValueExists;
@@ -20,13 +22,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-27 11:23:45</sys_created_on>
         <sys_id>c9ff103b1b18d010a89720a8ec4bcb89</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>IsTableSupported</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
-        <sys_policy>read</sys_policy>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_c9ff103b1b18d010a89720a8ec4bcb89</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-06-21 09:32:26</sys_updated_on>
+        <sys_updated_on>2025-05-02 14:17:40</sys_updated_on>
     </sys_script_include>
 </record_update>

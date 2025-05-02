@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns the config object based on the actual configuration in the instance.</description>
+        <mobile_callable>false</mobile_callable>
         <name>GetConfigInstance</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetConfigInstance()
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;
@@ -92,13 +94,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-08-19 11:35:36</sys_created_on>
         <sys_id>2c18af50db76d890ba15a35305961976</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>GetConfigInstance</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
-        <sys_policy>read</sys_policy>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_2c18af50db76d890ba15a35305961976</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-26 07:17:07</sys_updated_on>
+        <sys_updated_on>2025-05-02 14:17:33</sys_updated_on>
     </sys_script_include>
 </record_update>

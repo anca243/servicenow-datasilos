@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="m2m Data Silos to Groups" max_length="40" name="x_snc_datasilos_m2m_groups_datasilos" sizeclass="24" type="collection">
+    <element db_object_id="39b3d8de939a1210ae97b4aa6aba10f3" label="m2m Data Silos to Groups" max_length="40" name="x_snc_datasilos_m2m_groups_datasilos" type="collection">
         <element attributes="encode_utf8=false" label="Data Silo" mandatory="true" max_length="32" name="datasilo" reference="x_snc_datasilos_datasilos" type="reference"/>
         <element attributes="encode_utf8=false" label="Group" mandatory="true" max_length="32" name="group" reference="sys_user_group" reference_qual="javascript:x_snc_datasilos.GetGroupFilter()" type="reference" use_reference_qualifier="advanced"/>
         <element choice="3" default="fulfiller" label="Type" mandatory="true" max_length="40" name="type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Member" sequence="1" value="member"/>
                 <element inactive_on_update="false" label="Fulfiller" sequence="2" value="fulfiller"/>
                 <element inactive_on_update="false" label="Supervisor" sequence="3" value="supervisor"/>
+                <element inactive_on_update="false" label="Member" sequence="1" value="member"/>
             </choice>
         </element>
         <index name="index">

@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Render a html fragment to provide the current status of DataSilos</description>
+        <mobile_callable>false</mobile_callable>
         <name>HtmlRenderStatus</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function HtmlRenderStatus()
 {
 	var RenderValue = x_snc_devtools.RenderValue;
@@ -252,13 +254,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-04-03 07:45:03</sys_created_on>
         <sys_id>37c3bb11db972490ba15a3530596195f</sys_id>
-        <sys_mod_count>77</sys_mod_count>
+        <sys_mod_count>78</sys_mod_count>
         <sys_name>HtmlRenderStatus</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
-        <sys_policy>read</sys_policy>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_37c3bb11db972490ba15a3530596195f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-11-07 15:39:00</sys_updated_on>
+        <sys_updated_on>2025-05-02 14:17:34</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -11,7 +11,6 @@ With a failure timeout of 5 Seconds</description>
         <mugshots_cache_json/>
         <notes>User ALPHA_SC_0 checks for incident SC_1</notes>
         <order>21</order>
-        <snapshot/>
         <step_config display_value="Record Query (Deprecated)">0270b8005f30220012b44adb7f46666a</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -19,9 +18,9 @@ With a failure timeout of 5 Seconds</description>
         <sys_id>c6a468c1db662410ba15a353059619cd</sys_id>
         <sys_mod_count>43</sys_mod_count>
         <sys_name>Record Query (Deprecated)</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_c6a468c1db662410ba15a353059619cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2021-11-18 16:28:49</sys_updated_on>

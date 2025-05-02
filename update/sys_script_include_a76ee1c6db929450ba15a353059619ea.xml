@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function adds a silo (identified by a sys_id) to the supervisor whitelist field of a given record. If the silo is already whitelisted, no change is made.</description>
+        <mobile_callable>false</mobile_callable>
         <name>RecordAddSiloToSupervisorWhitelist</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function RecordAddSiloToSupervisorWhitelist(record, strNewSiloSysId)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;
@@ -36,13 +38,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-07-30 16:41:12</sys_created_on>
         <sys_id>a76ee1c6db929450ba15a353059619ea</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>RecordAddSiloToSupervisorWhitelist</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
-        <sys_policy>read</sys_policy>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_a76ee1c6db929450ba15a353059619ea</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-09-28 12:56:52</sys_updated_on>
+        <sys_updated_on>2025-05-02 14:17:39</sys_updated_on>
     </sys_script_include>
 </record_update>

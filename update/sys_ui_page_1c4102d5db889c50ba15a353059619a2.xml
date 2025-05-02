@@ -75,7 +75,7 @@
 	<ul>
 		<g2:no_escape>$[
 			docapi.RenderSystemRequirements(
-				'Tokyo, Utah',
+				'Xanadu,Yokohama',
 				true,
 				AppGetDependencies());
 		]</g2:no_escape>	
@@ -215,8 +215,8 @@
 		]</g2:no_escape>
 		<li>Elevate roles to security_admin</li>
 		<li>Go to "DataSilos/Access Control (ACL)" and check if there are any ACLs in the "DataSilos" application scope that refer to OOTB tables (e.g. incident, incident_task, etc.) with a name like e.g. incident.* (This is "incident DOT asterix"). If you see some, they must be deleted. Do NOT delete any ACLs that refer to any x_snc_datasilos* fields (like e.g. x_snc_datasilos_group_whitelist). A platform bug eventually creates them during installation and associates them to the app scope. Note that they cannot be deleted directly, because the platform denies any change to an ACL that refers to a table in the global scope from within an application scope. Use the following trick: Change the table to "Data Silos" then "Save" and then "Delete" them.</li>
-		<li>Switch to global scope</li>
-		<li>Create a new update set in the global scope to capture all changes related to the DataSilos installation. In case some of the ACLs reside in different scopes, you might have to create additional update sets for these scopes to capture all changes.</li>
+		<!--<li>Switch to global scope</li>
+		<li>Create a new update set in the global scope to capture all changes related to the DataSilos installation. In case some of the ACLs reside in different scopes, you might have to create additional update sets for these scopes to capture all changes.</li>-->
 		<li>WARNING: In the following steps, a script is going to make changes to existing scripts within ACLs or add scripts to ACLs. Verify that you have sufficient test coverage in place to confirm regression safety.</li>
 		<g2:no_escape>$[
 			docapi.RenderInstallationInstructionsAppInstall();
@@ -265,7 +265,7 @@ answer = bAnswer;
 			<li>Tests may also fail to to restrictions that result from other before query business rules. Try deactivating them to see what happens. Maybe additional configuration on users, groups or roles are needed.</li>
 			<li>Also consider restrictions resulting from Domain Separation. DataSilos can be used in combination with Domain Separation - however make sure that test data records are all created in the same domain.</li>
 		</ul>
-		<li>Set all update sets to complete.</li>
+		<!--<li>Set all update sets to complete.</li>-->
 		<li>Optimize the database:</li>
 		<p>There are two options:</p>
 		<ol>
@@ -326,6 +326,29 @@ Best regards,
 		<li>If this does not resolve the issue, deactivate all "DataSilos" business rules and UNDO all changes done to ACLs.</li>
 		<li>If this still does not resolve issues - the root cause is probably somewhere else. However, at this point one could remove the DataSilos application as a whole – BUT KEEP IN MIND THAT THIS WILL IRREVOCABLY DELETE ALL WHITELIST INFORMATION!</li>
 	</ol>
+	
+	<h3>Uninstall</h3>
+	<p>DataSilos modifies ACLs in various tables outside the DataSilos scope. Hence uninstalling the application is NOT sufficient to remove DataSilos from an instance. Follow these steps to uninstall DataSilos:</p>
+	<ol>
+		<li>Deactivate the scheduled job&#160;<a href="/sysauto_script.do?sys_id=2d0f7525dbb43058bc44d844ca961934" target="_blank">DataSilos - Maintenance</a>. This is to prevent any further updates to ACLs.</li>
+		<li>Run the following script as a background script to undo any modifications to ACLs made by DataSilos:<pre>
+var grACL = new GlideRecord('sys_security_acl');
+grACL.addQuery('script','CONTAINS','x_snc_datasilos.ExecuteACL(current)');
+grACL.addQuery('script','DOES NOT CONTAIN','/* x_snc_datasilos.ExecuteACL(current) */');
+grACL.query();
+while (grACL.next())
+{
+    gs.info('ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
+    gs.info('Current script: '+grACL.script);
+    var strScript = grACL.getValue('script');
+    var strScriptNew = strScript.replace('x_snc_datasilos.ExecuteACL(current)','true /* x_snc_datasilos.ExecuteACL(current) */');
+    gs.info('New script: '+strScriptNew);
+    grACL.script = strScriptNew;
+    grACL.update();
+}</pre>
+		</li>
+		<li>Delete the application "DataSilos" from the instance via Studio.</li>
+	</ol>
 
 	<h2>Reference</h2>
 	
@@ -340,7 +363,15 @@ Best regards,
 	
 	<h3>Scheduled Jobs</h3>
 	<g2:no_escape>$[docapi.RenderScheduledJobs()]</g2:no_escape>
+
+	<h3>Tables</h3>
+	<g2:no_escape>$[docapi.RenderTables()]</g2:no_escape>		
 	
+	<h3>Dependencies</h3>
+	<g2:no_escape>$[docapi.RenderDependencies()]</g2:no_escape>		
+
+	<h3>Technical Debts</h3>
+	<g2:no_escape>$[docapi.RenderTechnicalDebts()]</g2:no_escape>		
 	
 	<h3>Table Columns</h3>
 	<p>Each supported table is equipped with several new columns to support DataSilos filtering:</p>
@@ -514,12 +545,26 @@ DataSilos - incident_task - cross-silo
 
 	
 	<h2>Release Notes</h2>
-<!---
-	<h3>3.TODO - 2023-TODO</h3>
+
+	<h3>3.9.0 - 2025-05-02</h3>
 	<ol>
-		<li>TODO</li> 
+		<li>DevTools 1.121.0 is now required.</li>
+		<li>DataSilos is fully tested with Xanadu and Yokohama.</li>
+		<li>Tokyo and Utah are no longer actively supported.</li>
+		<li>Renamed menu item "Data Silos" to "Silos" for consistency.</li>
+		<li>Added menu item for "Groups".</li>
+		<li>Removed the deactivation of the OOTB business rule that prevents before query business rules on cross-scope tables from MaintenanceDatabaseViews() as this is already done by DevTools' AppInstall() script.</li>
+		<li>Function Maintenance() can now be called with just the name of the table.</li>
+		<li>Test step config "DataSilos - Check table implementation" now checks if the maintenance schedule jobs use the new calling pattern for the Maintenance() function.</li>
+		<li>AppBuilder() now creates maintenance schedule jobs using the new calling pattern for function Maintenance().</li>
+		<li>AppBuilder() now creates business rules with order "42600" to avoid unique order clashes.</li>
+		<li>Fixed several CodeSanity findings.</li>
+		<li>Added more missing ATF tests for Script Include functions.</li>
+		<li>Updated ATF tests to match new test user naming convention.</li>
+		<li>Added chapter "Uninstall" to the manual.</li>
+		<li>ATF test "DataSilos - incident - database views" is now more resilient against database view tables with incorrect orders.</li>
+		<li>Updated installation instructions to avoid using update sets.</li>
 	</ol>
--->
 	
 	<h3>3.8.0 - 2023-07-26</h3>
 	<ol>
@@ -922,13 +967,24 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>676</sys_mod_count>
+        <sys_mod_count>697</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-26 14:55:24</sys_updated_on>
+        <sys_updated_on>2025-05-02 13:57:51</sys_updated_on>
     </sys_ui_page>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>1c4102d5db889c50ba15a353059619a2</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-08 08:21:49</sys_created_on>
+        <sys_id>ce872d1193702a10959b7fda2bba10f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-08 08:21:49</sys_updated_on>
+        <table>sys_ui_page</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

@@ -6,7 +6,9 @@
         <caller_access>1</caller_access>
         <client_callable>false</client_callable>
         <description>The DevToolsGetLinkDirectory function is called by the DevTools extension point instance class and returns an extended (or modified) link directory object that serves as the basis for the DevTools Link page.</description>
+        <mobile_callable>false</mobile_callable>
         <name>DevToolsGetLinkDirectory</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function DevToolsGetLinkDirectory(linkdirectory)
 {
 	linkdirectory['DataSilos'] =
@@ -33,9 +35,9 @@
         <sys_id>0073ee72db37fc904647dad1f3961917</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>DevToolsGetLinkDirectory</sys_name>
-        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
-        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_0073ee72db37fc904647dad1f3961917</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2021-11-26 15:18:53</sys_updated_on>
