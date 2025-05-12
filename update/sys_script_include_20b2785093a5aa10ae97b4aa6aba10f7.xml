@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_datasilos.GetDataSilosACL</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Returns the GlideRecord object for the "DataSilos" ACL for the given table and field (or for the table of field is blank).&#13;
+Returns false if no applicable ACL could be found.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>GetDataSilosACL</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[function GetDataSilosACL(strTable, strField)
+{
+	var IsValidTable = x_snc_devtools.IsValidTable;
+	var IsValidColumn = x_snc_devtools.IsValidColumn;
+
+	if (IsValidTable(strTable) == false)
+	{
+		return false;
+	}
+
+	var strPostFix = '';
+	if (IsValidColumn(strTable,strField) == true || strField == '*')
+	{
+		strPostFix = '.' + strField;
+	}
+
+	var grACL = new GlideRecord('sys_security_acl');
+	grACL.addQuery('name','=',strTable + strPostFix);
+	grACL.addActiveQuery();
+	grACL.addQuery('type','=','record');
+	grACL.addQuery('operation','=','read');
+	grACL.addQuery('decision_type','=','deny');
+	grACL.addQuery('description','=','DataSilos');
+	grACL.query();
+	if (grACL.getRowCount() != 1)
+	{
+		return false;
+	}
+	if (grACL.next() == false)
+	{
+		return false;
+	}
+	return grACL;
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 08:45:54</sys_created_on>
+        <sys_id>20b2785093a5aa10ae97b4aa6aba10f7</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>GetDataSilosACL</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>sys_script_include_20b2785093a5aa10ae97b4aa6aba10f7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-12 08:54:09</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>20b2785093a5aa10ae97b4aa6aba10f7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 08:45:54</sys_created_on>
+        <sys_id>0e13309093a5aa10ae97b4aa6aba1016</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-12 08:45:54</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
