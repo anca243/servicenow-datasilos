@@ -29,6 +29,51 @@ generateDescription();]]></description_generator>
 	var GetBoolValue = x_snc_devtools.GetBoolValue;
 	var StringRemoveCharacters = x_snc_devtools.StringRemoveCharacters;
 	var CheckACLScript = x_snc_datasilos.CheckACLScript;
+
+	var strTable = GetStringValue(inputs.u_table);
+
+	stepResult.setSuccess();
+
+	var strMessage = 'DataSilos Check ACLs for table: ['+strTable+']\n';
+
+	function CheckACLs(strTable,strField)
+	{
+
+		var strName = strTable;
+		if (strTable != '')
+		{
+			strName += '.' + strField;
+		}
+		var grACL = x_snc_datasilos.GetDataSilosACL(strTable,strField);
+		if (grACL == false)
+		{
+			strMessage += '\nFailed: No active DataSilos "Deny Unless" ACL was found "'+strName+'"!\n\n';
+			stepResult.setFailed();	
+		}
+		else
+		{
+			var strScript = GetStringValue(grACL.script);
+			strScript = StringRemoveCharacters(strScript,' \n\r\t');
+			if (strScript == '')
+			{
+				strMessage += 'Failed: Script is empty!\n';
+				stepResult.setFailed();
+			}
+
+			var bScriptOK = CheckACLScript(strScript);
+			
+			if (bScriptOK == false)
+			{
+				strMessage += 'Failed: Script does not contain a valid implementation with "x_snc_datasilos.ExecuteACL(current);"!\n';
+				stepResult.setFailed();
+			}		
+		}
+	
+	/*
+	var GetStringValue = x_snc_devtools.GetStringValue;
+	var GetBoolValue = x_snc_devtools.GetBoolValue;
+	var StringRemoveCharacters = x_snc_devtools.StringRemoveCharacters;
+	var CheckACLScript = x_snc_datasilos.CheckACLScript;
 	
 	stepResult.setSuccess();
 
@@ -78,11 +123,16 @@ generateDescription();]]></description_generator>
 			}
 		}
 		
+
+	*/
 	}
 
-	CheckACLsByName(strTable);
-	CheckACLsByName(strTable+'.*');
-	
+
+	CheckACLs(strTable);
+	CheckACLs(strTable,'*');
+
+
+
 	stepResult.setOutputMessage(strMessage);
 	
 	
@@ -93,14 +143,14 @@ generateDescription();]]></description_generator>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-10-02 14:14:51</sys_created_on>
         <sys_id>5f42f662db23d810ba15a353059619cd</sys_id>
-        <sys_mod_count>42</sys_mod_count>
+        <sys_mod_count>43</sys_mod_count>
         <sys_name>DataSilos - Check ACLs</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_config_5f42f662db23d810ba15a353059619cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-07-20 14:48:56</sys_updated_on>
+        <sys_updated_on>2025-05-12 12:15:00</sys_updated_on>
         <template_reminder>TBD</template_reminder>
         <type display_value="Test Step" name="sys_atf_step">844d8f97d1e302104f34ba60d8b7c1dc</type>
         <wizard_redirect/>
@@ -108,4 +158,15 @@ generateDescription();]]></description_generator>
     <sys_translated_text action="delete_multiple" query="documentkey=5f42f662db23d810ba15a353059619cd"/>
     <sys_variable_value action="delete_multiple" query="document_key=5f42f662db23d810ba15a353059619cd"/>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_5f42f662db23d810ba15a353059619cd^id=5f42f662db23d810ba15a353059619cd"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>5f42f662db23d810ba15a353059619cd</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 12:13:57</sys_created_on>
+        <sys_id>71b229949369aa10ae97b4aa6aba10f8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-12 12:13:57</sys_updated_on>
+        <table>sys_atf_step_config</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
