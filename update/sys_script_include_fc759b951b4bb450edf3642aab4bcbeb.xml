@@ -19,7 +19,7 @@
 	var strScriptNoWhiteSpace = StringRemoveCharacters(strScript,' \n\r\t');
 	if (strScriptNoWhiteSpace == '')
 	{
-		return "answer = x_snc_datasilos.ExecuteACL(current);";
+		return "answer = "+GetCoreACLScript()+";";
 	}
 	
 	if (strScript.indexOf('\n') == -1)
@@ -29,7 +29,7 @@
 			+"bAnswer = {CODE}\n"
 			+"if (bAnswer == true)\n"
 			+"{\n"
-			+"\tbAnswer = x_snc_datasilos.ExecuteACL(current);\n"
+			+"\tbAnswer = "+GetCoreACLScript()+";\n"
 			+"}\n"
 			+"answer = bAnswer;";	
 
@@ -55,7 +55,7 @@
 			+"bAnswer = GetAnswer();\n"
 			+"if (bAnswer == true)\n"
 			+"{\n"
-			+"\tbAnswer = x_snc_datasilos.ExecuteACL(current);\n"
+			+"\tbAnswer = "+GetCoreACLScript()+";\n"
 			+"}\n"
 			+"answer = bAnswer;";	
 		return strScriptMultiLine.replace('{CODE}',strScript);		
@@ -69,13 +69,24 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-10-06 15:25:16</sys_created_on>
         <sys_id>fc759b951b4bb450edf3642aab4bcbeb</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>ModifyACLScript</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_fc759b951b4bb450edf3642aab4bcbeb</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:41</sys_updated_on>
+        <sys_updated_on>2025-05-12 15:53:07</sys_updated_on>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>fc759b951b4bb450edf3642aab4bcbeb</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 15:38:33</sys_created_on>
+        <sys_id>f6819610932daa10ae97b4aa6aba1086</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-12 15:38:33</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
