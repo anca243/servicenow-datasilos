@@ -2,17 +2,17 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>public</access>
         <active>true</active>
-        <api_name>x_snc_datasilos.AppBuilder</api_name>
+        <api_name>x_snc_datasilos.AppBuilderDataSilos</api_name>
         <caller_access/>
         <client_callable>false</client_callable>
         <description>The function turns an existing scoped app into a DataSilos plugin app and adds all components required to support a given set of tables.</description>
         <mobile_callable>false</mobile_callable>
-        <name>AppBuilder</name>
+        <name>AppBuilderDataSilos</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>function AppBuilder(strAppSysIdOrScopeName,aTables,strAppMenuSeparator,nAppMenuOrderStart)&#13;
+        <script>function AppBuilderDataSilos(strAppSysIdOrScopeName,aTables,strAppMenuSeparator,nAppMenuOrderStart)&#13;
 {&#13;
 /*&#13;
-	x_snc_datasilos.AppBuilder('x_snc_datasilos',[&#13;
+	x_snc_datasilos.AppBuilderDataSilos('x_snc_datasilos',[&#13;
 		'incident',&#13;
 		'incident_task',&#13;
 		'change_request',&#13;
@@ -23,7 +23,7 @@
 		'sc_req_item',&#13;
 		'sc_task']);&#13;
 &#13;
-	x_snc_datasilos.AppBuilder('x_snc_datasilosci',[&#13;
+	x_snc_datasilos.AppBuilderDataSilos('x_snc_datasilosci',[&#13;
 		'cmdb_ci'],&#13;
 		'CMDB',&#13;
 		10000);&#13;
@@ -60,7 +60,7 @@
 		{&#13;
 			strTableLog = strTable + ': ';&#13;
 		}&#13;
-		x_snc_datasilos.Log('AppBuilder: '+strTableLog+strText);&#13;
+		x_snc_datasilos.Log('AppBuilderDataSilos: '+strTableLog+strText);&#13;
 	}&#13;
 	&#13;
 	var strParentAppScope = 'x_snc_datasilos';&#13;
@@ -102,7 +102,7 @@
 	&#13;
 	var aTables = GetArrayValue(aTables);&#13;
 	&#13;
-	Log('AppBuilder is working on app '+strAppScope+'. The following tables will be supported: '+RenderValue(aTables));&#13;
+	Log('AppBuilderDataSilos is working on app '+strAppScope+'. The following tables will be supported: '+RenderValue(aTables));&#13;
 	&#13;
 &#13;
 	// We do not implement the extension point implemntation for DataSilos itself!&#13;
@@ -357,13 +357,13 @@
 				grSD.sys_scope = strAppSysId;&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Global Visibility" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'global',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'global',strAppScope);&#13;
 			}&#13;
 			&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'global', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'global', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'global', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'global', strFieldSysId, 'write');&#13;
 			}&#13;
 			&#13;
 			&#13;
@@ -400,13 +400,13 @@
 				grSD.use_reference_qualifier = 'simple';&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Supervisor Whitelist" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'supervisor_whitelist',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'supervisor_whitelist',strAppScope);&#13;
 			}&#13;
 			&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'supervisor_whitelist', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'supervisor_whitelist', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'supervisor_whitelist', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'supervisor_whitelist', strFieldSysId, 'write');&#13;
 			}&#13;
 			&#13;
 			&#13;
@@ -441,13 +441,13 @@
 				grSD.use_reference_qualifier = 'simple';&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Fulfiller Whitelist" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'fulfiller_whitelist',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'fulfiller_whitelist',strAppScope);&#13;
 			}&#13;
 			&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'fulfiller_whitelist', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'fulfiller_whitelist', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'fulfiller_whitelist', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'fulfiller_whitelist', strFieldSysId, 'write');&#13;
 			}&#13;
 &#13;
 &#13;
@@ -482,12 +482,12 @@
 				grSD.use_reference_qualifier = 'simple';&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Group Whitelist" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'group_whitelist',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'group_whitelist',strAppScope);&#13;
 			}&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'group_whitelist', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'group_whitelist', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'group_whitelist', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'group_whitelist', strFieldSysId, 'write');&#13;
 			}&#13;
 			&#13;
 			&#13;
@@ -518,12 +518,12 @@
 				grSD.sys_scope = strAppSysId;&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Security Clearance" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'security_clearance',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'security_clearance',strAppScope);&#13;
 			}&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'security_clearance', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'security_clearance', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'security_clearance', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'security_clearance', strFieldSysId, 'write');&#13;
 			}	&#13;
 			&#13;
 			strColumn = MakeColumnName('ghost');&#13;
@@ -553,12 +553,12 @@
 				grSD.sys_scope = strAppSysId;&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Ghost" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'ghost',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'ghost',strAppScope);&#13;
 			}&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'ghost', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'ghost', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'ghost', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'ghost', strFieldSysId, 'write');&#13;
 			}&#13;
 			&#13;
 			strColumn = MakeColumnName('last_maintenance');&#13;
@@ -588,13 +588,13 @@
 				grSD.sys_scope = strAppSysId;&#13;
 				strFieldSysId = GlideRecordInsert(grSD);&#13;
 				Log('Adding the "Last Maintenance" field: '+RenderValue(strFieldSysId));&#13;
-				AppBuilderFieldLabelsSetScope(strAppScope,strTable,'last_maintenance',strAppScope);&#13;
+				AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,'last_maintenance',strAppScope);&#13;
 &#13;
 			}&#13;
 			if (IsValidSysId(strFieldSysId) == true)&#13;
 			{&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'last_maintenance', strFieldSysId, 'read');&#13;
-				AppBuilderAddFieldACL(strAppScope, strTable, 'last_maintenance', strFieldSysId, 'write');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'last_maintenance', strFieldSysId, 'read');&#13;
+				AppBuilderDataSilosAddFieldACL(strAppScope, strTable, 'last_maintenance', strFieldSysId, 'write');&#13;
 			}&#13;
 			&#13;
 			&#13;
@@ -1008,7 +1008,7 @@
 	return grApp;&#13;
 &#13;
 &#13;
-	function AppBuilderFieldLabelsSetScope(strAppScope,strTable,strColumn,strScope)&#13;
+	function AppBuilderDataSilosFieldLabelsSetScope(strAppScope,strTable,strColumn,strScope)&#13;
 	{&#13;
 		var grSD = new GlideRecord('sys_documentation');&#13;
 		grSD.addQuery('name','=',strTable);&#13;
@@ -1021,7 +1021,7 @@
 		}&#13;
 	}&#13;
 &#13;
-	function AppBuilderAddFieldACL(strAppScope, strTable, strFieldName, strFieldSysId,strOperation)&#13;
+	function AppBuilderDataSilosAddFieldACL(strAppScope, strTable, strFieldName, strFieldSysId,strOperation)&#13;
 	{&#13;
 		strAppScope = GetStringValue(strAppScope);&#13;
 		strTable = GetStringValue(strTable);&#13;
@@ -1093,14 +1093,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-09-28 09:53:31</sys_created_on>
         <sys_id>ac1cf47e1b3af810edf3642aab4bcb45</sys_id>
-        <sys_mod_count>118</sys_mod_count>
-        <sys_name>AppBuilder</sys_name>
+        <sys_mod_count>119</sys_mod_count>
+        <sys_name>AppBuilderDataSilos</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_ac1cf47e1b3af810edf3642aab4bcb45</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:39</sys_updated_on>
+        <sys_updated_on>2025-05-13 08:42:53</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>ac1cf47e1b3af810edf3642aab4bcb45</id>
