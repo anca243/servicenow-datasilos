@@ -19,6 +19,8 @@
 	<p>In contrast to domain separation DataSilos allows the exchange of data (in form of individual records) between data silos and makes them visible to users on a need-to-know basis.</p>
 	<p>In addition to the organizational dimension, access to records can also be controlled based on security clearance levels. Each record and each user has a security clearance level. A user can only access a record if their security clearance level is equal or higher than the record's security clearance level.</p>
 	
+	<p><b><span style="color: red;">Please take note of the specific instructions on migrating from version 3 (or earlier) to version 4.</span></b></p>
+
 	<h2>Disclaimer</h2> 
 	<g2:no_escape>$[docapi.RenderDisclaimer()]</g2:no_escape>
 	
@@ -197,6 +199,43 @@
 		<li>Any existing test cases (that relate to the supported tables) should be executed as part of the QA. Behavior that was expected in the past may no longer be working with active filtering. In some cases, the silo configuration might have to be reviewed, in other cases, the test cases might have to be updated.</li>
 		<li>It is strongly recommended to use specific test users and test groups for functional testing. Do not reuse users or groups from other tests!</li>
 	</ol>
+
+	<h3>Migrating from version 3 (or earlier) to version 4.</h3>
+	<p>In Washington, a new kind of ACL was introduced: the "Deny Unless" ACL.</p>
+	<p>The ACLs allow the construction of AND combined conditions to grant or deny access to a resource - like "read" access to tables.</p>
+	<p>This new kind of ACL simplifies the mechanism by which DataSilos applies its access regime to records. In the past (prior to the introduction of "Deny Unless" ACLs) EVERY ACL on a table granting "read" access had to be modified to inject the AND condition to whatever other existing access rule.</p>
+	<p>With "Deny Unless" ACLs DataSilos can now block access based on the DataSilos access restrictions by adding two "Deny Unless" ACLs: One for read access to the table and a ".*" ACL for read access to all fields. No further modifications to existing ACLs is required.</p>
+	<p>In version 4 or later (with "Deny Unless" ACL support) DataSilos only creates new "Deny Unless" ACLs for supported tables - it will not modify any existing ACLs.</p>
+	<p>When migrating from version 3 or earlier (without "Deny Unless" ACL support) to version 4 or later (with "Deny Unless" ACL support) the existing, already modified "Allow If" ACLs may stay as they are - however the additional application of DataSilos conditions is no longer required.</p>
+	<p>A small performance gain is possible by undoing the ACL modification in these "Allow If" ACLs.</p>
+	<p>To undo these modifications you can either identify the affected ACLs manually and replace the current script by the script that was stored in the ACL description by DataSilos when first applying the modification or run the following script in global scope to modify the previously modified script to not execute DataSilos filtering:</p>
+<pre>
+var grACL = new GlideRecord('sys_security_acl');
+grACL.addQuery('decision_type','=','allow');
+grACL.addQuery('script','CONTAINS','x_snc_datasilos.ExecuteACL(current)');
+grACL.addQuery('script','DOES NOT CONTAIN','/* x_snc_datasilos.ExecuteACL(current) */');
+grACL.query();
+while (grACL.next())
+{
+    gs.info('ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
+    gs.info('Current script: '+grACL.script);
+    var strScript = grACL.getValue('script');
+    var strScriptNew = strScript.replace('x_snc_datasilos.ExecuteACL(current)','true /* x_snc_datasilos.ExecuteACL(current) */');
+    gs.info('New script: '+strScriptNew);
+    grACL.script = strScriptNew;
+    grACL.update();
+}</pre>
+	<p>This will however lead to scripts in ACLs that look like this:</p>
+	<pre>var bAnswer = false;
+bAnswer = new ApproverUtils().canApproversRead();
+if (bAnswer == true)
+{
+	bAnswer = true /* x_snc_datasilos.ExecuteACL(current) */;
+}
+answer = bAnswer;</pre>
+	<p>The relative cost of the if statement and the two redundant assignments is neglectable - but it obviously does not support readability of the code. A manual cleanup is recommended but not required.</p>
+		
+
 	<h3>Installation</h3>
 	<p>Before installing, verify if there is a plugin scoped app that contains specific customizations and additions relevant to your organization's instance and which may come with its own installation instructions. In such cases, follow the installation instructions shipped with the custom scoped app.</p>
 	<p>Please note that is it NOT RECOMMENDED to deploy DataSilos and related scoped apps using update sets. Use source control instead!</p>
@@ -333,21 +372,22 @@ Best regards,
 		<li>Deactivate the scheduled job&#160;<a href="/sysauto_script.do?sys_id=2d0f7525dbb43058bc44d844ca961934" target="_blank">DataSilos - Maintenance</a>. This is to prevent any further updates to ACLs.</li>
 		<li>Run the following script as a background script to undo any modifications to ACLs made by DataSilos:<pre>
 var grACL = new GlideRecord('sys_security_acl');
-grACL.addQuery('script','CONTAINS','x_snc_datasilos.ExecuteACL(current)');
-grACL.addQuery('script','DOES NOT CONTAIN','/* x_snc_datasilos.ExecuteACL(current) */');
+grACL.addQuery('decision_type','=','deny');
+grACL.addQuery('script','CONTAINS',x_snc_datasilos.GetCoreACLScript());
+grACL.addQuery('script','DOES NOT CONTAIN','/* '+x_snc_datasilos.GetCoreACLScript()+' */');
 grACL.query();
 while (grACL.next())
 {
     gs.info('ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
     gs.info('Current script: '+grACL.script);
     var strScript = grACL.getValue('script');
-    var strScriptNew = strScript.replace('x_snc_datasilos.ExecuteACL(current)','true /* x_snc_datasilos.ExecuteACL(current) */');
+    var strScriptNew = strScript.replace(x_snc_datasilos.GetCoreACLScript(),'true /* '+x_snc_datasilos.GetCoreACLScript()+' */');
     gs.info('New script: '+strScriptNew);
     grACL.script = strScriptNew;
     grACL.update();
 }</pre>
 		</li>
-		<li>Delete the application "DataSilos" from the instance via Studio.</li>
+		<li>Delete the application "DataSilos" from the instance.</li>
 	</ol>
 
 	<h2>Reference</h2>
@@ -548,7 +588,7 @@ DataSilos - incident_task - cross-silo
 
 	<h3>4.0.0 - TODO</h3>
 	<ol>
-		<li>DataSilos now relies on "Deny Unless" ACLs. The modification of existing "Allow If" (classic) ACLs (including injecting modified scripts) is no longer required. New ATF tests may fail if modified "Allow If" ACLs are still present. DataSilos will continue to work with the classic "Allow If" ACLs in place, but the scripted conditions are no longer required. Undoing changes done by DataSilos 3.x is recommended for improved performance.</li>
+		<li>DataSilos now relies on "Deny Unless" ACLs. The modification of existing "Allow If" (classic) ACLs (including injecting modified scripts) is no longer required. New ATF tests may fail if modified "Allow If" ACLs are still present. DataSilos will continue to work with the classic "Allow If" ACLs in place, but the scripted conditions are no longer required. Undoing changes done by DataSilos 3 (and earlier) is recommended for improved performance.</li>
 		<li>Function MaintenanceACLs() now checks and creates "Deny Unless" ACLs.</li>
 		<li>Added function GetDataSilosACL().</li>
 		<li>Added functiom GetCoreACLScript().</li>
@@ -980,14 +1020,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>704</sys_mod_count>
+        <sys_mod_count>717</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-13 08:42:24</sys_updated_on>
+        <sys_updated_on>2025-05-13 13:29:45</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
