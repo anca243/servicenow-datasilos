@@ -32,9 +32,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-02 12:13:32</sys_created_on>
         <sys_id>dafbffebdbb78450ba15a353059619eb</sys_id>
-        <sys_mod_count>97</sys_mod_count>
+        <sys_mod_count>98</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-13 13:40:48</sys_updated_on>
+        <sys_updated_on>2025-05-14 12:04:18</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <uninstall_blocked>false</uninstall_blocked>
@@ -46,8 +46,8 @@
         <x_snc_devtools_maintainer>Sascha Wildgrube</x_snc_devtools_maintainer>
         <x_snc_devtools_maintainer_email>sascha.wildgrube@servicenow.com</x_snc_devtools_maintainer_email>
         <x_snc_devtools_repo_url>https://github.com/saschawildgrube/servicenow-datasilos.git</x_snc_devtools_repo_url>
-        <x_snc_devtools_showstopper>false</x_snc_devtools_showstopper>
-        <x_snc_devtools_showstopper_details/>
+        <x_snc_devtools_showstopper>true</x_snc_devtools_showstopper>
+        <x_snc_devtools_showstopper_details>AppBuilderDataSilos() creates invalid sys_dictionary records.</x_snc_devtools_showstopper_details>
         <x_snc_wildgrubelab_test/>
         <x_snc_wildgrubelab_test2/>
     </sys_app>
