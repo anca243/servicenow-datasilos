@@ -31,8 +31,10 @@
 	var GlideRecordInsert = x_snc_devtools.GlideRecordInsert;&#13;
 	var GlideRecordUpdate = x_snc_devtools.GlideRecordUpdate;&#13;
 	var IsValidSysId = x_snc_devtools.IsValidSysId;&#13;
+	var IsValidRecord = x_snc_devtools.IsValidRecord;&#13;
 	var RecordGetValue = x_snc_devtools.RecordGetValue;&#13;
 	var GetRecord = x_snc_devtools.GetRecord;&#13;
+	var GetRoleRecord = x_snc_devtools.GetRoleRecord;&#13;
 &#13;
 	aTables = GetArrayValue(aTables);&#13;
 	strAppMenuSeparator = GetStringValue(strAppMenuSeparator);&#13;
@@ -1062,28 +1064,33 @@
 &#13;
 		if (IsValidSysId(strAclSysId) == true)&#13;
 		{&#13;
-			// Add Role&#13;
-			Log('Working on ACL role...');&#13;
-			var strAclRoleSysId = '';&#13;
-			var grSSAR = new GlideRecord('sys_security_acl_role');&#13;
-			grSSAR.addQuery('sys_security_acl','=',strAclSysId);&#13;
-			grSSAR.addQuery('sys_user_role','=','23df0da71b48d490a89720a8ec4bcb72'); // x_snc_datasilos.manager&#13;
-			grSSAR.query();&#13;
-			if (grSSAR.getRowCount() != 0)&#13;
+			var grRoleManager = GetRoleRecord('x_snc_datasilos.manager');&#13;
+&#13;
+			if (IsValidRecord(grRoleManager) == true)&#13;
 			{&#13;
-				grSSAR.next();&#13;
-				strAclRoleSysId = GetStringValue(grSSAR.sys_id);&#13;
-				Log('Role for ACL for "'+strOperation+'" operation already exists for field "'+strFieldName+'" in table "'+strTable+'".');&#13;
-			}&#13;
-			else&#13;
-			{&#13;
+				// Add Role&#13;
+				Log('Working on ACL role...');&#13;
+				var strAclRoleSysId = '';&#13;
 				var grSSAR = new GlideRecord('sys_security_acl_role');&#13;
-				grSSAR.initialize();&#13;
-				grSSAR.sys_scope = strAppSysId;&#13;
-				grSSAR.sys_security_acl = strAclSysId;&#13;
-				grSSAR.sys_user_role = '23df0da71b48d490a89720a8ec4bcb72'; // x_snc_datasilos.manager;&#13;
-				strAclRoleSysId = GlideRecordInsert(grSSAR);&#13;
-				Log('Role for "'+strFieldName+'" ACL for "'+strOperation+'" operation: '+RenderValue(strAclRoleSysId));&#13;
+				grSSAR.addQuery('sys_security_acl','=',strAclSysId);&#13;
+				grSSAR.addQuery('sys_user_role','=',grRoleManager.sys_id); &#13;
+				grSSAR.query();&#13;
+				if (grSSAR.getRowCount() != 0)&#13;
+				{&#13;
+					grSSAR.next();&#13;
+					strAclRoleSysId = GetStringValue(grSSAR.sys_id);&#13;
+					Log('Role for ACL for "'+strOperation+'" operation already exists for field "'+strFieldName+'" in table "'+strTable+'".');&#13;
+				}&#13;
+				else&#13;
+				{&#13;
+					var grSSAR = new GlideRecord('sys_security_acl_role');&#13;
+					grSSAR.initialize();&#13;
+					grSSAR.sys_scope = strAppSysId;&#13;
+					grSSAR.sys_security_acl = strAclSysId;&#13;
+					grSSAR.sys_user_role = grRoleManager.sys_id;&#13;
+					strAclRoleSysId = GlideRecordInsert(grSSAR);&#13;
+					Log('Role for "'+strFieldName+'" ACL for "'+strOperation+'" operation: '+RenderValue(strAclRoleSysId));&#13;
+				}&#13;
 			}&#13;
 		}&#13;
 	}&#13;
@@ -1094,14 +1101,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-09-28 09:53:31</sys_created_on>
         <sys_id>ac1cf47e1b3af810edf3642aab4bcb45</sys_id>
-        <sys_mod_count>125</sys_mod_count>
+        <sys_mod_count>127</sys_mod_count>
         <sys_name>AppBuilderDataSilos</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_ac1cf47e1b3af810edf3642aab4bcb45</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-14 07:01:36</sys_updated_on>
+        <sys_updated_on>2025-05-14 13:49:27</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>ac1cf47e1b3af810edf3642aab4bcb45</id>
