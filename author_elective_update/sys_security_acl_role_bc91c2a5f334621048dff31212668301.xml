@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>@@snc_write_audit@@</sys_created_by>
+        <sys_created_on>2025-05-10 04:28:51</sys_created_on>
+        <sys_id>bc91c2a5f334621048dff31212668301</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_security_acl display_value="incident.x_snc_datasilos_global">bc91c2a5f334621048dff31198257887</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_bc91c2a5f334621048dff31212668301</sys_update_name>
+        <sys_updated_by>@@snc_write_audit@@</sys_updated_by>
+        <sys_updated_on>2025-05-10 04:28:51</sys_updated_on>
+        <sys_user_role display_value="x_snc_datasilos.manager" name="x_snc_datasilos.manager">23df0da71b48d490a89720a8ec4bcb72</sys_user_role>
+    </sys_security_acl_role>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</application>
+        <file_path/>
+        <instance_id>220092723b73421816e44a8aa4e45ab1</instance_id>
+        <instance_name>wildxanadu</instance_name>
+        <name>sys_security_acl_role_bc91c2a5f334621048dff31212668301</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>@@snc_write_audit@@</sys_created_by>
+        <sys_created_on>2025-05-10 04:28:51</sys_created_on>
+        <sys_id>bc91c2a5f334621048dff31212668301</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_security_acl display_value="incident.x_snc_datasilos_global">bc91c2a5f334621048dff31198257887</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_bc91c2a5f334621048dff31212668301</sys_update_name>
+        <sys_updated_by>@@snc_write_audit@@</sys_updated_by>
+        <sys_updated_on>2025-05-10 04:28:51</sys_updated_on>
+        <sys_user_role display_value="x_snc_datasilos.manager" name="x_snc_datasilos.manager">23df0da71b48d490a89720a8ec4bcb72</sys_user_role>
+    </sys_security_acl_role>
+</record_update>]]></payload>
+        <payload_hash>-1929211304</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>f444009993256250959b7fda2bba10ee</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-15 07:56:03</sys_created_on>
+        <sys_id>8574ccd993256250959b7fda2bba1002</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196d2f17b640000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-15 07:56:03</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>4174ccd946256250ddfea39046d20802</update_guid>
+        <update_guid_history>4174ccd946256250ddfea39046d20802:0,5b920055e525625085664cc3d6ee409d:290364493,a232ccd12d256250339db544164a89ea:0,1640845d06e16250ab66fa1e0ad727fd:-1580690265,1d40445d0be16250122e95cc64faf432:188857046,9140445d27e16250d34fff59e6bbda30:-374832950</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="incident.x_snc_datasilos_global.x_snc_datasilos.manager">f3f4805193656250959b7fda2bba107f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>@@snc_write_audit@@</sys_created_by>
+        <sys_created_on>2025-05-15 07:58:25</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>0265db009344454eba952c7d28d77229</sys_id>
+        <sys_metadata>bc91c2a5f334621048dff31212668301</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>incident.x_snc_datasilos_global.x_snc_datasilos.manager</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope_delete display_value="">13d28564f033417896743d5e7fb82131</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_bc91c2a5f334621048dff31212668301</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_bc91c2a5f334621048dff31212668301">8574ccd993256250959b7fda2bba1002</sys_update_version>
+        <sys_updated_by>@@snc_write_audit@@</sys_updated_by>
+        <sys_updated_on>2025-05-15 07:58:25</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

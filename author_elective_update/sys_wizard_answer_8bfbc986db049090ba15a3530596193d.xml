@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="DELETE">
+        <active>true</active>
+        <answer>Incident Task</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Incident Task</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Task" name="Task">17e6835bd12302104f34ba60d8b7c1f4</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-04-09 17:49:26</sys_created_on>
+        <sys_id>8bfbc986db049090ba15a3530596193d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Incident Task</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>sys_wizard_answer_8bfbc986db049090ba15a3530596193d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-09 17:49:26</sys_updated_on>
+        <table/>
+        <target_url>incident_task.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</application>
+        <file_path/>
+        <instance_id>220092723b73421816e44a8aa4e45ab1</instance_id>
+        <instance_name>wildxanadu</instance_name>
+        <name>sys_wizard_answer_8bfbc986db049090ba15a3530596193d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <answer>Incident Task</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Incident Task</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Task" name="Task">17e6835bd12302104f34ba60d8b7c1f4</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-04-09 17:49:26</sys_created_on>
+        <sys_id>8bfbc986db049090ba15a3530596193d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Incident Task</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>sys_wizard_answer_8bfbc986db049090ba15a3530596193d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-09 17:49:26</sys_updated_on>
+        <table/>
+        <target_url>incident_task.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+</record_update>]]></payload>
+        <payload_hash>356309255</payload_hash>
+        <record_name>Incident Task</record_name>
+        <reverted_from/>
+        <source>f444009993256250959b7fda2bba10ee</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-15 07:56:07</sys_created_on>
+        <sys_id>8274801d93256250959b7fda2bba10e0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196d2f18b6c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-15 07:56:07</sys_updated_on>
+        <type>Answer</type>
+        <update_guid>4e74801d2f25625062f9b31185f861df</update_guid>
+        <update_guid_history>4e74801d2f25625062f9b31185f861df:0,41d280d5d42562506214d5e2e64a9138:0,be3200158725625095f733b55fbc1795:0,ab40485dcce162508b94d5dc02e02f1b:1157068915,e9f31c92dcda1210737d4d7158fa33ca:347881995</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-15 07:58:29</sys_created_on>
+        <sys_db_object display_value="" name="sys_wizard_answer">sys_wizard_answer</sys_db_object>
+        <sys_id>2f43bb2e228646828c3676a2cd6880e4</sys_id>
+        <sys_metadata>8bfbc986db049090ba15a3530596193d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Incident Task</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_parent display_value="Task">17e6835bd12302104f34ba60d8b7c1f4</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope_delete display_value="">13d28564f033417896743d5e7fb82131</sys_scope_delete>
+        <sys_update_name>sys_wizard_answer_8bfbc986db049090ba15a3530596193d</sys_update_name>
+        <sys_update_version display_value="sys_wizard_answer_8bfbc986db049090ba15a3530596193d">8274801d93256250959b7fda2bba10e0</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-15 07:58:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

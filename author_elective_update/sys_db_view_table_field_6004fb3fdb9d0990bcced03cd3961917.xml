@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_view_table_field">
+    <sys_db_view_table_field action="DELETE">
+        <field>x_snc_datasilos_fulfiller_whitelist</field>
+        <sys_class_name>sys_db_view_table_field</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-03 08:24:52</sys_created_on>
+        <sys_id>6004fb3fdb9d0990bcced03cd3961917</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_datasilos_fulfiller_whitelist</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>sys_db_view_table_field_6004fb3fdb9d0990bcced03cd3961917</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-03 08:24:52</sys_updated_on>
+        <table>incident</table>
+        <view_table display_value="">00c33ffbdb9d0990bcced03cd396196b</view_table>
+        <x_snc_datasilos_created>true</x_snc_datasilos_created>
+    </sys_db_view_table_field>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</application>
+        <file_path/>
+        <instance_id>220092723b73421816e44a8aa4e45ab1</instance_id>
+        <instance_name>wildxanadu</instance_name>
+        <name>sys_db_view_table_field_6004fb3fdb9d0990bcced03cd3961917</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_view_table_field">
+    <sys_db_view_table_field action="INSERT_OR_UPDATE">
+        <field>x_snc_datasilos_fulfiller_whitelist</field>
+        <sys_class_name>sys_db_view_table_field</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-03 08:24:52</sys_created_on>
+        <sys_id>6004fb3fdb9d0990bcced03cd3961917</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_datasilos_fulfiller_whitelist</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>sys_db_view_table_field_6004fb3fdb9d0990bcced03cd3961917</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-03 08:24:52</sys_updated_on>
+        <table>incident</table>
+        <view_table display_value="">00c33ffbdb9d0990bcced03cd396196b</view_table>
+        <x_snc_datasilos_created>true</x_snc_datasilos_created>
+    </sys_db_view_table_field>
+</record_update>]]></payload>
+        <payload_hash>-419972454</payload_hash>
+        <record_name>x_snc_datasilos_fulfiller_whitelist</record_name>
+        <reverted_from/>
+        <source>f444009993256250959b7fda2bba10ee</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>current</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-15 07:55:43</sys_created_on>
+        <sys_id>986404d993256250959b7fda2bba109d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196d2f12f3d0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-15 07:55:43</sys_updated_on>
+        <type>View Field</type>
+        <update_guid>d46404d9c52562509951df3d2afb2e84</update_guid>
+        <update_guid_history>d46404d9c52562509951df3d2afb2e84:0,afb2c09591256250cc61ae120c737fd5:0,a4e39c5203da121026d11e595e20d49a:-419972454</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-15 08:00:20</sys_created_on>
+        <sys_db_object display_value="" name="sys_db_view_table_field">sys_db_view_table_field</sys_db_object>
+        <sys_id>0dccc511f794453a88cdae581f9bb844</sys_id>
+        <sys_metadata>6004fb3fdb9d0990bcced03cd3961917</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_datasilos_fulfiller_whitelist</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope_delete display_value="">13d28564f033417896743d5e7fb82131</sys_scope_delete>
+        <sys_update_name>sys_db_view_table_field_6004fb3fdb9d0990bcced03cd3961917</sys_update_name>
+        <sys_update_version display_value="sys_db_view_table_field_6004fb3fdb9d0990bcced03cd3961917">986404d993256250959b7fda2bba109d</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-15 08:00:20</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
