@@ -70,7 +70,7 @@
 		<li>DataSilos can handle the derived tables of tables in scope for filtering.</li> 
 		<li>DataSilos also protects database views which contain tables that should be filtered. Most existing solutions did not cover that aspect and eventually left records unprotected when database views were in use.</li>
 		<li>Business rules and ACLs must be used in combination to cover all scenarios. Many solutions miss one of the two.</li>
-		<li>When ACLs are used to control access based on a general access rule, these rules must be checked in every ACL on a given table. If just one ACL does not also check the filtering rule, access might be granted to users which should not access the record. DataSilos uses ATF tests to verify that all ACLs of a table are configured correctly and can help to prevent that future changes open up security issues.</li>
+		<li>When ACLs are used to control access based on a general access rule, these rules must be checked through "Deny Unless" ACLs on a given table. DataSilos uses ATF tests to verify that ACLs are in place and configured properly for all supported tables. This prevents that future changes open up security issues.</li>
 	</ol>
 	
 	<h2>System Requirements</h2>
@@ -89,7 +89,7 @@
 	<p>DataSilos has business rules that modify the query which is used to retrieve data for a table in scope from the database. Before query business rules are triggered whenever a user or background job requests data explicitly from a table. However, before query business rules are not triggered if data from a table is integrated into the response for a different table - e.g. if fields from a referenced record are used in a list view or form.</p>
 	<h3>ACLs</h3>
 	<p>Since before query business rules are not always triggered when retrieving data from a given table, ACLs are in place to perform a check on every single record that is delivered back from the database. This inlcudes cases where fields are joined from other tables via dot-walking or reference fields.</p>
-	<p>It's in the nature of ACLs to allow access to a table, record, or specific field if there is at least one ACL that grants access. This means that the DataSilos specific logic must be considered in every single ACL of a table in scope. And that implies that the protection mechanism is always in danger to be compromised by later changes to the platform. New or changed features might require new ACLs to be added or existing ones to be modified. A developer who is not aware of the role ACLs play for DataSilos filtering might easily remove (or not add) the required logic to the ACL script. To mitigate this, DataSilos contains ATF tests that check the configuration of all relevant ACLs. However, it is crucial that these tests are execute as part of the regular development and deployment process.</p>
+	<p>Classic "Allow If" ACLs allow access to a table, record, or specific field if there is at least one ACL that grants access. "Deny Unless" ACLs which are introduced in Xanadu, allow the protection of a supported table through only two ACLs. This implies that the protection mechanism is always in danger to be compromised by later changes to ACLs. New or changed features might require new ACLs to be added or existing ones to be modified. A developer who is not aware of the role ACLs play for DataSilos filtering might easily remove (or not add) the required ACLs on a supported table. To mitigate this, DataSilos contains ATF tests that check the configuration of all relevant ACLs. However, it is crucial that these tests are execute as part of the regular development and deployment process.</p>
 	<h3>Database View Protection</h3>
 	<p>Database views need to be protected explicitly. The before query business rule of a table are not triggered if a database view is used to retrieve data from a table. ACLs are triggered when records are retrieved through a database view - but the records being presented to the ACL script are incomplete, so specific logic must be applied when checking records within database views.</p>
 	<p>In order to apply the filtering on records when using database views DataSilos uses a background job to configure business rules for all databse views automatically. In addition it adds the fields to the table view configuration of a databse view if required. As a result, no additional manual configuration is required to protect data delivered via database views.</p> 
@@ -145,8 +145,8 @@
 		<li>Consider that before DataSilos is activated, existing records must be initialized - i.e. their whitelists must be populated so that visibility is not prevented for users who should have access. Do existing records have sufficient information to apply the visibility rules? Can all records be updated? Would such updates trigger unnecessary notifications?</li>
 	
 	</ol>
-	<h3>User Stories</h3>
-	<p>The following list of user stories is a recommendation based on previous DataSilos implementations. It should be extended and modified based on the findings of the analysis.</p>
+	<h3>Backlog</h3>
+	<p>The following list of backlog items is a recommendation based on previous DataSilos implementations. It should be extended and modified based on the findings of the analysis.</p>
 	<ol>
 		<li>As the CISO I must ensure that incidents/problems/changes/... are only visible to specific groups of users.</li>
 		<li>As the CISO I must ensure that specific rules are applied to control the initial visibility of records.</li>
@@ -158,7 +158,7 @@
 		<li>As the platform owner I want to ensure that all relevant silos are set up and groups are assigned to silos.</li>
 		<li>As the platform owner I want to have a comprehensive documentation on DataSilos, its dependencies and customizations.</li>
 		<li>As the platform owner I want ServiceNow developers from my organization to be trained to maintain and support the solution.</li>
-		<li>As the platform owner I want to ensure that future changes do not break the data segregation logic (e.g. by adding additional ACLs that bypass filtering).</li>
+		<li>As the platform owner I want to ensure that future changes do not break the data segregation logic (e.g. by modifying relevant ACLs which may bypass filtering).</li>
 		<li>As the platform owner I want to reduce customizations. When upgrading to future releases we need checks if DataSilos can be replaced by OOTB features.</li>
 		<li>As the platform owner I want to ensure that users have access from day one. This requires initializing all records before go-live.</li>
 		<li>As the platform owner I want to ensure that no records become totally inaccessible to everyone. Maintenance jobs should always run.</li>
@@ -363,7 +363,7 @@ Best regards,
 	<ol>
 		<li>Activate ATF testing and run all tests (in production!) to verify that the installation and functionality works from the perspective of the DataSilos application.</li>
 		<li>Go to the "Options" module and DEACTIVATE the DataSilos application.</li>
-		<li>If this does not resolve the issue, deactivate all "DataSilos" business rules and UNDO all changes done to ACLs.</li>
+		<li>If this does not resolve the issue, deactivate all "DataSilos" business rules and DELETE the "Deny Unless" ACLs created by DataSilos.</li>
 		<li>If this still does not resolve issues - the root cause is probably somewhere else. However, at this point one could remove the DataSilos application as a whole – BUT KEEP IN MIND THAT THIS WILL IRREVOCABLY DELETE ALL WHITELIST INFORMATION!</li>
 	</ol>
 	
@@ -1017,14 +1017,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>723</sys_mod_count>
+        <sys_mod_count>727</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-14 12:15:13</sys_updated_on>
+        <sys_updated_on>2025-05-14 14:02:25</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
