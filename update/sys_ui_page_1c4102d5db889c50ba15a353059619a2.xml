@@ -370,16 +370,27 @@ Best regards,
 	<h3>Uninstall</h3>
 	<p>DataSilos modifies ACLs in various tables outside the DataSilos scope. Hence uninstalling the application is NOT sufficient to remove DataSilos from an instance. Follow these steps to uninstall DataSilos:</p>
 	<ol>
+		<li>Deactivate DataSilos filtering via system property:&#160;<a href="/sys_properties.do?sys_id=c7949581db805c50ba15a353059619da" target="_blank">x_snc_datasilos.active</a>.</li>
 		<li>Deactivate the scheduled job&#160;<a href="/sysauto_script.do?sys_id=2d0f7525dbb43058bc44d844ca961934" target="_blank">DataSilos - Maintenance</a>. This is to prevent any further updates to ACLs.</li>
-		<li>Run the following script as a background script in global scope to delete all DataSilos "Deny Unless" ACLs:<pre>
+		<li>Run the following script as a background script in global scope to delete all DataSilos "Deny Unless" ACLs and auto-generated business rules for database views:<pre>
 var grACL = new GlideRecord('sys_security_acl');
 grACL.addQuery('decision_type','=','deny');
 grACL.addQuery('description','=','DataSilos');
 grACL.query();
 while (grACL.next())
 {
-    gs.info('ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
-    grACL.deleteRecord();
+    gs.info('Deleting ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
+    x_snc_devtools.GlideRecordDelete(grACL,true);
+}
+
+var grBR = new GlideRecord('sys_script');
+grBR.addQuery('scope','=','global');
+grBR.addQuery('name','STARTSWITH','DataSilos - ');
+grBR.query();
+while (grBR.next())
+{
+    gs.info('Deleting Business Rule: '+grBR.sys_id+ ': ' + grBR.getDisplayValue());
+    x_snc_devtools.GlideRecordDelete(grBR,true);
 }</pre>
 		</li>
 		<li>Delete the application "DataSilos" from the instance.</li>
@@ -1017,14 +1028,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>728</sys_mod_count>
+        <sys_mod_count>730</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-15 14:46:14</sys_updated_on>
+        <sys_updated_on>2025-05-16 13:12:01</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
