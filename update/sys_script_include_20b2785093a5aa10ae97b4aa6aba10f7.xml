@@ -10,9 +10,10 @@ Returns false if not exactly ONE applicable ACL could be found.</description>
         <mobile_callable>false</mobile_callable>
         <name>GetDataSilosACL</name>
         <sandbox_callable>false</sandbox_callable>
-        <script><![CDATA[function GetDataSilosACL(strTable, strField)
+        <script><![CDATA[function GetDataSilosACL(strTable, strField, bIgnoreDuplicates)
 {
 	var GetStringValue = x_snc_devtools.GetStringValue;
+	var GetBoolValue = x_snc_devtools.GetBoolValue;
 	var IsValidTable = x_snc_devtools.IsValidTable;
 	var IsValidColumn = x_snc_devtools.IsValidColumn;
 
@@ -22,6 +23,7 @@ Returns false if not exactly ONE applicable ACL could be found.</description>
 	}
 
 	strField = GetStringValue(strField);
+	bIgnoreDuplicates = GetBoolValue(bIgnoreDuplicates);
 
 	var strPostFix = '';
 	if (IsValidColumn(strTable,strField) == true || strField == '*')
@@ -37,9 +39,12 @@ Returns false if not exactly ONE applicable ACL could be found.</description>
 	grACL.addQuery('decision_type','=','deny');
 	grACL.addQuery('description','=','Data'+'Silos');
 	grACL.query();
-	if (grACL.getRowCount() != 1)
+	if (bIgnoreDuplicates == false)
 	{
-		return false;
+		if (grACL.getRowCount() != 1)
+		{
+			return false;
+		}
 	}
 	if (grACL.next() == false)
 	{
@@ -51,14 +56,14 @@ Returns false if not exactly ONE applicable ACL could be found.</description>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-05-12 08:45:54</sys_created_on>
         <sys_id>20b2785093a5aa10ae97b4aa6aba10f7</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>GetDataSilosACL</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_20b2785093a5aa10ae97b4aa6aba10f7</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-03 09:27:05</sys_updated_on>
+        <sys_updated_on>2025-06-03 09:31:32</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>20b2785093a5aa10ae97b4aa6aba10f7</id>
