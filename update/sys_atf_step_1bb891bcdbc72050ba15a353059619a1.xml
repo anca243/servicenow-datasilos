@@ -2,7 +2,7 @@
     <sys_atf_step action="INSERT_OR_UPDATE">
         <active>true</active>
         <copied_from/>
-        <description>Performs sanity checks on the scoped app: DataSilos
+        <description>Performs sanity checks on the app.
 </description>
         <display_name>DevTools - Check scoped app sanity</display_name>
         <inputs/>
@@ -14,14 +14,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-03-19 20:52:28</sys_created_on>
         <sys_id>1bb891bcdbc72050ba15a353059619a1</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>DevTools - Check scoped app sanity</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_1bb891bcdbc72050ba15a353059619a1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-03-19 20:52:28</sys_updated_on>
+        <sys_updated_on>2025-06-03 08:55:25</sys_updated_on>
         <table/>
         <test display_value="DataSilos - Implementation">08421f231b20a090a89720a8ec4bcb36</test>
         <timeout/>
@@ -41,6 +41,20 @@
         <sys_updated_on>2021-03-19 20:52:29</sys_updated_on>
         <value>dafbffebdbb78450ba15a353059619eb</value>
         <variable display_value="">8a0aaa9f1bac2090a89720a8ec4bcbc8</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1bb891bcdbc72050ba15a353059619a1</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-03 08:55:25</sys_created_on>
+        <sys_id>d448ce1f9371a610959b7fda2bba1044</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-03 08:55:25</sys_updated_on>
+        <value>dafbffebdbb78450ba15a353059619eb</value>
+        <variable display_value="Application">064db9ba93e1aa50959b7fda2bba109f</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_786a921f1b6c2090a89720a8ec4bcbc9^id=1bb891bcdbc72050ba15a353059619a1"/>
 </record_update>
