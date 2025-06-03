@@ -6,12 +6,13 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Returns the GlideRecord object for the "DataSilos" ACL for the given table and field (or for the table of field is blank).&#13;
-Returns false if no applicable ACL could be found.</description>
+Returns false if not exactly ONE applicable ACL could be found.</description>
         <mobile_callable>false</mobile_callable>
         <name>GetDataSilosACL</name>
         <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetDataSilosACL(strTable, strField)
 {
+	var GetStringValue = x_snc_devtools.GetStringValue;
 	var IsValidTable = x_snc_devtools.IsValidTable;
 	var IsValidColumn = x_snc_devtools.IsValidColumn;
 
@@ -19,6 +20,8 @@ Returns false if no applicable ACL could be found.</description>
 	{
 		return false;
 	}
+
+	strField = GetStringValue(strField);
 
 	var strPostFix = '';
 	if (IsValidColumn(strTable,strField) == true || strField == '*')
@@ -48,14 +51,14 @@ Returns false if no applicable ACL could be found.</description>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-05-12 08:45:54</sys_created_on>
         <sys_id>20b2785093a5aa10ae97b4aa6aba10f7</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>GetDataSilosACL</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_20b2785093a5aa10ae97b4aa6aba10f7</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-15 07:58:23</sys_updated_on>
+        <sys_updated_on>2025-06-03 09:27:05</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>20b2785093a5aa10ae97b4aa6aba10f7</id>
