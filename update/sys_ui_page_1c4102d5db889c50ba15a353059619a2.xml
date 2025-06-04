@@ -10,7 +10,7 @@
 <div style="padding-left: 20px;">
 <span style="visibility: hidden;">_CUT_HERE_</span>
 	<g2:no_escape>$[
-		var docapi = new x_snc_devtools.DocumentationAPI('dafbffebdbb78450ba15a353059619eb');
+		var docapi = new x_snc_devtools.DocumentationAPI('x_snc_datasilos');
 		docapi.RenderHeader();   
 	]</g2:no_escape>	
 
@@ -19,6 +19,8 @@
 	<p>In contrast to domain separation DataSilos allows the exchange of data (in form of individual records) between data silos and makes them visible to users on a need-to-know basis.</p>
 	<p>In addition to the organizational dimension, access to records can also be controlled based on security clearance levels. Each record and each user has a security clearance level. A user can only access a record if their security clearance level is equal or higher than the record's security clearance level.</p>
 	
+	<p><b><span style="color: red;">Please take note of the specific instructions on migrating from version 3 (or earlier) to version 4.</span></b></p>
+
 	<h2>Disclaimer</h2> 
 	<g2:no_escape>$[docapi.RenderDisclaimer()]</g2:no_escape>
 	
@@ -36,6 +38,7 @@
 	</ul>
 	
 	<h2>Supported Processes</h2>
+	<p>DataSilos comes with support for the following processes. It can however be extended to apply specific filter rules on every table of the platform.</p>
 	<ol>
 		<li>Incident</li>
 		<li>Change Request</li>
@@ -68,7 +71,7 @@
 		<li>DataSilos can handle the derived tables of tables in scope for filtering.</li> 
 		<li>DataSilos also protects database views which contain tables that should be filtered. Most existing solutions did not cover that aspect and eventually left records unprotected when database views were in use.</li>
 		<li>Business rules and ACLs must be used in combination to cover all scenarios. Many solutions miss one of the two.</li>
-		<li>When ACLs are used to control access based on a general access rule, these rules must be checked in every ACL on a given table. If just one ACL does not also check the filtering rule, access might be granted to users which should not access the record. DataSilos uses ATF tests to verify that all ACLs of a table are configured correctly and can help to prevent that future changes open up security issues.</li>
+		<li>When ACLs are used to control access based on a general access rule, these rules must be checked through "Deny Unless" ACLs on a given table. DataSilos uses ATF tests to verify that ACLs are in place and configured properly for all supported tables. This prevents that future changes open up security issues.</li>
 	</ol>
 	
 	<h2>System Requirements</h2>
@@ -87,7 +90,7 @@
 	<p>DataSilos has business rules that modify the query which is used to retrieve data for a table in scope from the database. Before query business rules are triggered whenever a user or background job requests data explicitly from a table. However, before query business rules are not triggered if data from a table is integrated into the response for a different table - e.g. if fields from a referenced record are used in a list view or form.</p>
 	<h3>ACLs</h3>
 	<p>Since before query business rules are not always triggered when retrieving data from a given table, ACLs are in place to perform a check on every single record that is delivered back from the database. This inlcudes cases where fields are joined from other tables via dot-walking or reference fields.</p>
-	<p>It's in the nature of ACLs to allow access to a table, record, or specific field if there is at least one ACL that grants access. This means that the DataSilos specific logic must be considered in every single ACL of a table in scope. And that implies that the protection mechanism is always in danger to be compromised by later changes to the platform. New or changed features might require new ACLs to be added or existing ones to be modified. A developer who is not aware of the role ACLs play for DataSilos filtering might easily remove (or not add) the required logic to the ACL script. To mitigate this, DataSilos contains ATF tests that check the configuration of all relevant ACLs. However, it is crucial that these tests are execute as part of the regular development and deployment process.</p>
+	<p>Classic "Allow If" ACLs allow access to a table, record, or specific field if there is at least one ACL that grants access. "Deny Unless" ACLs which are introduced in Xanadu, allow the protection of a supported table through only two ACLs. This implies that the protection mechanism is always in danger to be compromised by later changes to ACLs. New or changed features might require new ACLs to be added or existing ones to be modified. A developer who is not aware of the role ACLs play for DataSilos filtering might easily remove (or not add) the required ACLs on a supported table. To mitigate this, DataSilos contains ATF tests that check the configuration of all relevant ACLs. However, it is crucial that these tests are execute as part of the regular development and deployment process.</p>
 	<h3>Database View Protection</h3>
 	<p>Database views need to be protected explicitly. The before query business rule of a table are not triggered if a database view is used to retrieve data from a table. ACLs are triggered when records are retrieved through a database view - but the records being presented to the ACL script are incomplete, so specific logic must be applied when checking records within database views.</p>
 	<p>In order to apply the filtering on records when using database views DataSilos uses a background job to configure business rules for all databse views automatically. In addition it adds the fields to the table view configuration of a databse view if required. As a result, no additional manual configuration is required to protect data delivered via database views.</p> 
@@ -143,8 +146,8 @@
 		<li>Consider that before DataSilos is activated, existing records must be initialized - i.e. their whitelists must be populated so that visibility is not prevented for users who should have access. Do existing records have sufficient information to apply the visibility rules? Can all records be updated? Would such updates trigger unnecessary notifications?</li>
 	
 	</ol>
-	<h3>User Stories</h3>
-	<p>The following list of user stories is a recommendation based on previous DataSilos implementations. It should be extended and modified based on the findings of the analysis.</p>
+	<h3>Backlog</h3>
+	<p>The following list of backlog items is a recommendation based on previous DataSilos implementations. It should be extended and modified based on the findings of the analysis.</p>
 	<ol>
 		<li>As the CISO I must ensure that incidents/problems/changes/... are only visible to specific groups of users.</li>
 		<li>As the CISO I must ensure that specific rules are applied to control the initial visibility of records.</li>
@@ -156,7 +159,7 @@
 		<li>As the platform owner I want to ensure that all relevant silos are set up and groups are assigned to silos.</li>
 		<li>As the platform owner I want to have a comprehensive documentation on DataSilos, its dependencies and customizations.</li>
 		<li>As the platform owner I want ServiceNow developers from my organization to be trained to maintain and support the solution.</li>
-		<li>As the platform owner I want to ensure that future changes do not break the data segregation logic (e.g. by adding additional ACLs that bypass filtering).</li>
+		<li>As the platform owner I want to ensure that future changes do not break the data segregation logic (e.g. by modifying relevant ACLs which may bypass filtering).</li>
 		<li>As the platform owner I want to reduce customizations. When upgrading to future releases we need checks if DataSilos can be replaced by OOTB features.</li>
 		<li>As the platform owner I want to ensure that users have access from day one. This requires initializing all records before go-live.</li>
 		<li>As the platform owner I want to ensure that no records become totally inaccessible to everyone. Maintenance jobs should always run.</li>
@@ -197,6 +200,43 @@
 		<li>Any existing test cases (that relate to the supported tables) should be executed as part of the QA. Behavior that was expected in the past may no longer be working with active filtering. In some cases, the silo configuration might have to be reviewed, in other cases, the test cases might have to be updated.</li>
 		<li>It is strongly recommended to use specific test users and test groups for functional testing. Do not reuse users or groups from other tests!</li>
 	</ol>
+
+	<h3>Migrating from version 3 (or earlier) to version 4.</h3>
+	<p>In Washington, a new kind of ACL was introduced: the "Deny Unless" ACL.</p>
+	<p>The ACLs allow the construction of AND combined conditions to grant or deny access to a resource - like "read" access to tables.</p>
+	<p>This new kind of ACL simplifies the mechanism by which DataSilos applies its access regime to records. In the past (prior to the introduction of "Deny Unless" ACLs) EVERY ACL on a table granting "read" access had to be modified to inject the AND condition to whatever other existing access rule.</p>
+	<p>With "Deny Unless" ACLs DataSilos can now block access based on the DataSilos access restrictions by adding two "Deny Unless" ACLs: One for read access to the table and a ".*" ACL for read access to all fields. No further modifications to existing ACLs is required.</p>
+	<p>In version 4 or later (with "Deny Unless" ACL support) DataSilos only creates new "Deny Unless" ACLs for supported tables - it will not modify any existing ACLs.</p>
+	<p>When migrating from version 3 or earlier (without "Deny Unless" ACL support) to version 4 or later (with "Deny Unless" ACL support) the existing, already modified "Allow If" ACLs may stay as they are - however the additional application of DataSilos conditions is no longer required.</p>
+	<p>A small performance gain is possible by undoing the ACL modification in these "Allow If" ACLs.</p>
+	<p>To undo these modifications you can either identify the affected ACLs manually and replace the current script by the script that was stored in the ACL description by DataSilos when first applying the modification or run the following script in global scope to modify the previously modified script to not execute DataSilos filtering:</p>
+<pre>
+var grACL = new GlideRecord('sys_security_acl');
+grACL.addQuery('decision_type','=','allow');
+grACL.addQuery('script','CONTAINS','x_snc_datasilos.ExecuteACL(current)');
+grACL.addQuery('script','DOES NOT CONTAIN','/* x_snc_datasilos.ExecuteACL(current) */');
+grACL.query();
+while (grACL.next())
+{
+    gs.info('ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
+    gs.info('Current script: '+grACL.script);
+    var strScript = grACL.getValue('script');
+    var strScriptNew = strScript.replace('x_snc_datasilos.ExecuteACL(current)','true /* x_snc_datasilos.ExecuteACL(current) */');
+    gs.info('New script: '+strScriptNew);
+    grACL.script = strScriptNew;
+    grACL.update();
+}</pre>
+	<p>This will however lead to scripts in ACLs that look like this:</p>
+	<pre>var bAnswer = false;
+bAnswer = new ApproverUtils().canApproversRead();
+if (bAnswer == true)
+{
+	bAnswer = true /* x_snc_datasilos.ExecuteACL(current) */;
+}
+answer = bAnswer;</pre>
+	<p>The relative cost of the if statement and the two redundant assignments is neglectable - but it obviously does not support readability of the code. A manual cleanup is recommended but not required.</p>
+		
+
 	<h3>Installation</h3>
 	<p>Before installing, verify if there is a plugin scoped app that contains specific customizations and additions relevant to your organization's instance and which may come with its own installation instructions. In such cases, follow the installation instructions shipped with the custom scoped app.</p>
 	<p>Please note that is it NOT RECOMMENDED to deploy DataSilos and related scoped apps using update sets. Use source control instead!</p>
@@ -214,14 +254,14 @@
 				'https://github.com/saschawildgrube/servicenow-datasilos');
 		]</g2:no_escape>
 		<li>Elevate roles to security_admin</li>
-		<li>Go to "DataSilos/Access Control (ACL)" and check if there are any ACLs in the "DataSilos" application scope that refer to OOTB tables (e.g. incident, incident_task, etc.) with a name like e.g. incident.* (This is "incident DOT asterix"). If you see some, they must be deleted. Do NOT delete any ACLs that refer to any x_snc_datasilos* fields (like e.g. x_snc_datasilos_group_whitelist). A platform bug eventually creates them during installation and associates them to the app scope. Note that they cannot be deleted directly, because the platform denies any change to an ACL that refers to a table in the global scope from within an application scope. Use the following trick: Change the table to "Data Silos" then "Save" and then "Delete" them.</li>
+		<!--<li>Go to "DataSilos/Access Control (ACL)" and check if there are any ACLs in the "DataSilos" application scope that refer to OOTB tables (e.g. incident, incident_task, etc.) with a name like e.g. incident.* (This is "incident DOT asterix"). If you see some, they must be deleted. Do NOT delete any ACLs that refer to any x_snc_datasilos* fields (like e.g. x_snc_datasilos_group_whitelist). A platform bug eventually creates them during installation and associates them to the app scope. Note that they cannot be deleted directly, because the platform denies any change to an ACL that refers to a table in the global scope from within an application scope. Use the following trick: Change the table to "Data Silos" then "Save" and then "Delete" them.</li>-->
 		<!--<li>Switch to global scope</li>
 		<li>Create a new update set in the global scope to capture all changes related to the DataSilos installation. In case some of the ACLs reside in different scopes, you might have to create additional update sets for these scopes to capture all changes.</li>-->
-		<li>WARNING: In the following steps, a script is going to make changes to existing scripts within ACLs or add scripts to ACLs. Verify that you have sufficient test coverage in place to confirm regression safety.</li>
+		<li>WARNING: In the following steps, a script is going to create new ACLs. Verify that you have sufficient test coverage in place to confirm regression safety.</li>
 		<g2:no_escape>$[
 			docapi.RenderInstallationInstructionsAppInstall();
 			]</g2:no_escape>
-		<li>Check out if there are any errors or warnings in the script output.</li>
+		<!--<li>Check out if there are any errors or warnings in the script output.</li>
 		<li>If there are ACLs which have not been modified automatically, then perform the steps listed below for each of the supported tables (including but not limited to the following):</li>
 <pre>
 incident
@@ -235,7 +275,7 @@ sc_req_item
 sc_task
 </pre>
 		<ol>
-			<li>At least two ACLs for the&#160;<b>read</b>&#160;operation must exist for each table:&#160;<b>table_name</b>&#160;and&#160;<b>table_name.*</b>. Ideally only ONE ACL exists for&#160;<b>table_name</b>&#160;and&#160;<b>table_name.*</b>&#160;(Note it is "table_name DOT asterix") for the&#160;<b>read</b>&#160;operation. You may have to create or change existing ACLs or consolidate multiple ACLs into one. Either way: make sure that all active ACLs contain the following script logic.</li> 
+			<li>Two "Deny Unless" ACLs for the&#160;<b>read</b>&#160;operation must exist for each table:&#160;<b>table_name</b>&#160;and&#160;<b>table_name.*</b>.  Either way: make sure that all active ACLs contain the following script logic.</li> 
 			<li>Activate "Advanced" (if not active already) and add the following script:</li>
 <pre>
 answer = x_snc_datasilos.ExecuteACL(current);	
@@ -255,8 +295,9 @@ answer = bAnswer;
 </pre>
 			<li>CAUTION: setting the response variable "answer" sometimes only works ONCE during a script. To avoid any issues, it is recommended to set the "answer" value only once at the end of the script.</li>
 		</ol>
-		<li>In case the default "System Administrator" user does no longer exist, is deactivated or should not be used to run scheduled jobs, identify a technical user that should be used to run scheduled jobs and configure the user for all DataSilos related jobs.</li>
-		<li>If possible, activate the DataSilos app in the options and then go to "Test Suite" and execute all tests. Fix any issues reported by the tests. If needed deactivate the DataSilos app after running all tests. The following list may help you to troubleshoot failing tests:</li>
+		-->
+		<li>In case the default "System Administrator" ("admin") user does no longer exist, is deactivated or should not be used to run scheduled jobs, identify a technical user that should be used to run scheduled jobs and configure the user for all DataSilos related jobs.</li>
+		<li>Activate the DataSilos app in the options and then go to "Test Suite" and execute all tests. Fix any issues reported by the tests. If needed deactivate the DataSilos app after running all tests. The following list may help you to troubleshoot failing tests:</li>
 		<ul>
 			<li>If tests fail directly on the first step it means that DataSilos (or the specific table) has not been configured to be active.</li>
 			<li>Tests may fail because the scoped app "DevTools" has not been installed or not properly set up. Have all relevant tables been configured to allow cross-scope access from all scopes? Check out the DevTools installation guide for more details.</li>
@@ -266,7 +307,39 @@ answer = bAnswer;
 			<li>Also consider restrictions resulting from Domain Separation. DataSilos can be used in combination with Domain Separation - however make sure that test data records are all created in the same domain.</li>
 		</ul>
 		<!--<li>Set all update sets to complete.</li>-->
-		<li>Optimize the database:</li>
+
+		<li>Navigate to the DataSilos log and check if there are messages that indicate aborting maintenance scripts. The log entry will state the sys_id of the record that is blocking the maintenance script. All data issues in existing records must be fixed so that the maintenance script can process all records in the table continuously.</li>	
+		<li>Navigate to "DataSilos/Status" and verify that there are no active tables that are marked "incomplete". Do not proceed until all records have been processed at least once.</li> 
+	</ol>
+	<h3>Configuration</h3>
+	<ol>
+		<li>Assign the x_snc_datasilos.manager role to users who are tasked to configure the silos.</li>
+		<li>As a data silos manager go to the "Data Silos" module and configure all data silos. Add the corresponding groups to each data silo. Groups associated to a data silo are either&#160;<b>Member</b>,&#160;<b>Fulfiller</b>&#160;or&#160;<b>Supervisor</b>&#160;groups. This can also be done automatically or via data import.</li>
+		<li>Setup silo-to-silo relationships where appropriate. Supervisors in a super silo also get access to the associated sub silo.</li>
+		<li>Assign the x_snc_datasilos.sentinel role to technical users where applicable. They will not be affected by any filtering.</li>
+		<li>Assign the x_snc_datasilos.sentinel role to users who are tasked to create reports and hence must access all data where applicable.</li>
+		<li>Go to "Options" and choose if the maintenance jobs should be active or not. As a general rule of thumb, it's always a good idea to let them run UNLESS they cause a performance degradation. If there are already records in the tables in scope, the maintenance jobs need to run and process every record at least once to make sure all records are initialized (and hence visible). After initial processing of all existing records, the business rules on the affected tables should ensure that all records are visible to eligible users, however sometimes unexpected situations occur - like an import of data from an external system without triggering business rules etc. The maintenance jobs make sure that such events don't leave records invisible to users.</li>
+		<li>Go to "ITSM Options" and configure the tables. Which tables should be affected by filtering? Which fields should be considered for instant access and whitelisting?</li>
+		<li>Go to the "Status" page to verify the configuration settings.</li>
+	</ol>
+	<h3>Activation</h3>
+	<ol>
+		<li>Go to "Options" and activate the maintenance jobs. Wait until all existing records have been initialized by checking the oldest date in the "Last Maintenance" field. The "Status" page provides an overview on the progress of the initial maintenance.</li>
+		<li>Go to the "Options" module and activate the DataSilos application.</li>
+		<li>Deactivate any existing conflicting business rules that may have been identified earlier.</li>
+		<li>Go to "Test Suite" and execute all tests.</li>
+	</ol>
+	<h3>Rollback</h3>
+	<p>In case anything goes terribly wrong after activation, follow these steps:</p>
+	<ol>
+		<li>Activate ATF testing and run all tests (in production!) to verify that the installation and functionality works from the perspective of the DataSilos application.</li>
+		<li>Go to the "Options" module and DEACTIVATE the DataSilos application.</li>
+		<li>If this does not resolve the issue, deactivate all "DataSilos" business rules and DELETE the "Deny Unless" ACLs created by DataSilos.</li>
+		<li>If this still does not resolve issues - the root cause is probably somewhere else. However, at this point one could remove the DataSilos application as a whole – BUT KEEP IN MIND THAT THIS WILL IRREVOCABLY DELETE ALL WHITELIST INFORMATION!</li>
+	</ol>
+
+	<h3>Database Optimization</h3>
+		<p>DataSilos will impact performance of the filtered tables. Additional filter conditions are added to every single read query. However the performance impact can be reduced.</p>
 		<p>There are two options:</p>
 		<ol>
 			<li>Let DataSilos automatically create recommended indexes by setting the system property&#160;<a href="/sys_properties.do?sys_id=b55aef1cdb4074d0bc44d844ca96194b" target="_blank">x_snc_datasilos.database_indexes.active</a>&#160;to true.</li>
@@ -296,58 +369,35 @@ Thank you very much.
 	
 Best regards,
 </pre>	
-		</ol>
-		<li>After the database optimization is in place and the maintenance scripts are running at full speed, navigate to the DataSilos log and check if there are messages that indicate aborting maintenance scripts. The log entry will state the sys_id of the record that is blocking the maintenance script. All data issues in existing records must be fixed so that the maintenance script can process all records in the table continuously.</li>	
-		<li>Navigate to "DataSilos/Status" and verify that there are no active tables that are marked "incomplete". Do not proceed until all records have been processed at least once.</li> 
-	</ol>
-	<h3>Configuration</h3>
-	<ol>
-		<li>Assign the x_snc_datasilos.manager role to users who are tasked to configure the silos.</li>
-		<li>As a data silos manager go to the "Data Silos" module and configure all data silos. Add the corresponding groups to each data silo. Groups associated to a data silo are either&#160;<b>Member</b>,&#160;<b>Fulfiller</b>&#160;or&#160;<b>Supervisor</b>&#160;groups. This can also be done automatically or via data import.</li>
-		<li>Setup silo-to-silo relationships where appropriate. Supervisors in a super silo also get access to the associated sub silo.</li>
-		<li>Assign the x_snc_datasilos.sentinel role to technical users where applicable. They will not be affected by any filtering.</li>
-		<li>Assign the x_snc_datasilos.sentinel role to users who are tasked to create reports and hence must access all data where applicable.</li>
-		<li>Go to "Options" and choose if the maintenance jobs should be active or not. As a general rule of thumb, it's always a good idea to let them run UNLESS they cause a performance degradation. If there are already records in the tables in scope, the maintenance jobs need to run and process every record at least once to make sure all records are initialized (and hence visible). After initial processing of all existing records, the business rules on the affected tables should ensure that all records are visible to eligible users, however sometimes unexpected situations occur - like an import of data from an external system without triggering business rules etc. The maintenance jobs make sure that such events don't leave records invisible to users.</li>
-		<li>Go to "ITSM Options" and configure the tables. Which tables should be affected by filtering? Which fields should be considered for instant access and whitelisting?</li>
-		<li>Go to the "Status" page to verify the configuration settings.</li>
-	</ol>
-	<h3>Activation</h3>
-	<ol>
-		<li>Go to "Options" and activate the maintenance jobs. Wait until all existing records have been initialized by checking the oldest date in the "Last Maintenance" field. The "Status" page provides an overview on the progress of the initial maintenance.</li>
-		<li>Go to the "Options" module and activate the DataSilos application.</li>
-		<li>Deactivate any existing conflicting business rules that may have been identified earlier.</li>
-		<li>Go to "Test Suite" and execute all tests.</li>
-	</ol>
-	<h3>Rollback</h3>
-	<p>In case anything goes terribly wrong after activation, follow these steps:</p>
-	<ol>
-		<li>Activate ATF testing and run all tests (in production!) to verify that the installation and functionality works from the perspective of the DataSilos application.</li>
-		<li>Go to the "Options" module and DEACTIVATE the DataSilos application.</li>
-		<li>If this does not resolve the issue, deactivate all "DataSilos" business rules and UNDO all changes done to ACLs.</li>
-		<li>If this still does not resolve issues - the root cause is probably somewhere else. However, at this point one could remove the DataSilos application as a whole – BUT KEEP IN MIND THAT THIS WILL IRREVOCABLY DELETE ALL WHITELIST INFORMATION!</li>
 	</ol>
 	
 	<h3>Uninstall</h3>
 	<p>DataSilos modifies ACLs in various tables outside the DataSilos scope. Hence uninstalling the application is NOT sufficient to remove DataSilos from an instance. Follow these steps to uninstall DataSilos:</p>
 	<ol>
+		<li>Deactivate DataSilos filtering via system property:&#160;<a href="/sys_properties.do?sys_id=c7949581db805c50ba15a353059619da" target="_blank">x_snc_datasilos.active</a>.</li>
 		<li>Deactivate the scheduled job&#160;<a href="/sysauto_script.do?sys_id=2d0f7525dbb43058bc44d844ca961934" target="_blank">DataSilos - Maintenance</a>. This is to prevent any further updates to ACLs.</li>
-		<li>Run the following script as a background script to undo any modifications to ACLs made by DataSilos:<pre>
+		<li>Run the following script as a background script in global scope to delete all DataSilos "Deny Unless" ACLs and auto-generated business rules for database views:<pre>
 var grACL = new GlideRecord('sys_security_acl');
-grACL.addQuery('script','CONTAINS','x_snc_datasilos.ExecuteACL(current)');
-grACL.addQuery('script','DOES NOT CONTAIN','/* x_snc_datasilos.ExecuteACL(current) */');
+grACL.addQuery('decision_type','=','deny');
+grACL.addQuery('description','=','DataSilos');
 grACL.query();
 while (grACL.next())
 {
-    gs.info('ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
-    gs.info('Current script: '+grACL.script);
-    var strScript = grACL.getValue('script');
-    var strScriptNew = strScript.replace('x_snc_datasilos.ExecuteACL(current)','true /* x_snc_datasilos.ExecuteACL(current) */');
-    gs.info('New script: '+strScriptNew);
-    grACL.script = strScriptNew;
-    grACL.update();
+    gs.info('Deleting ACL: '+grACL.sys_id+ ': ' + grACL.getDisplayValue());
+    x_snc_devtools.GlideRecordDelete(grACL,true);
+}
+
+var grBR = new GlideRecord('sys_script');
+grBR.addQuery('scope','=','global');
+grBR.addQuery('name','STARTSWITH','DataSilos - ');
+grBR.query();
+while (grBR.next())
+{
+    gs.info('Deleting Business Rule: '+grBR.sys_id+ ': ' + grBR.getDisplayValue());
+    x_snc_devtools.GlideRecordDelete(grBR,true);
 }</pre>
 		</li>
-		<li>Delete the application "DataSilos" from the instance via Studio.</li>
+		<li>Delete the application "DataSilos" from the instance.</li>
 	</ol>
 
 	<h2>Reference</h2>
@@ -493,7 +543,7 @@ x_snc_datasilos.Log('After DeleteAllData(): '+x_snc_devtools.RenderValue(testdat
 		<li>Implement the AppBuilder function based on the following template:</li>
 <pre>function AppBuilder()
 {
-	x_snc_datasilos.AppBuilder(
+	x_snc_datasilos.AppBuilderDataSilos(
 		'x_abc_your_app_scope',
 		[
 			'table1',
@@ -545,6 +595,27 @@ DataSilos - incident_task - cross-silo
 
 	
 	<h2>Release Notes</h2>
+
+	<h3>4.0.0 - 2025-06-04</h3>
+	<ol>
+		<li>DevTools 1.124.0 is now required.</li>
+		<li>DataSilos now relies on "Deny Unless" ACLs. The modification of existing "Allow If" (classic) ACLs (including injecting modified scripts) is no longer required. New ATF tests may fail if modified "Allow If" ACLs are still present. DataSilos will continue to work with the classic "Allow If" ACLs in place, but the scripted conditions are no longer required. Undoing changes done by DataSilos 3 (and earlier) is recommended for improved performance.</li>
+		<li>Function MaintenanceACLs() now checks and creates "Deny Unless" ACLs.</li>
+		<li>Function MaintenanceACLs() is no longer creating duplicate ACLs if more than one DataSilos ACL is already present.</li> 
+		<li>Added function GetDataSilosACL().</li>
+		<li>Added functiom GetCoreACLScript().</li>
+		<li>Added function GetTechnicalUser().</li>
+		<li>Refactored CheckACLScript() and ModifyACLScript() to consider the new uninstall-aware core ACL scripts.</li>
+		<li>Updated Business Rule "DataSilos - ACL Warning" to consider the new relevant ACLs.</li> 
+		<li>Added ATF test "DataSilos - incident - ACL" to validate the effectiveness of ACLs WITHOUT an active before query Business Rule.</li>
+		<li>Updated ATF Test Step Config "DataSilos - Check ACLs" to check for "Deny Unless" ACLs.</li>
+		<li>Updated ATF Test Step Config "DataSilos - Check table implementation" to allow for additional attributes on reference fields.</li>
+		<li>Updated ATF "DataSilos - Installation" and "DataSilos - Implementation" to adapt to the fix introduced by DevTools 1.124.0.</li>
+		<li>x_snc_datasilos.AppBuilder() has been renamed to AppBuilderDataSilos() for consistency.</li>
+		<li>AppBuilderDataSilos() now adds "TODO" in the boilerplate code of DataSilosGetStatus() so that the code gets flagged by CodeSanity checks.</li>
+		<li>Moved guidance on database optimization out of the installation instructions into a separate chapter in the manual.</li>
+	</ol>
+
 
 	<h3>3.9.0 - 2025-05-02</h3>
 	<ol>
@@ -967,14 +1038,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>697</sys_mod_count>
+        <sys_mod_count>740</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 13:57:51</sys_updated_on>
+        <sys_updated_on>2025-06-04 16:24:00</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>

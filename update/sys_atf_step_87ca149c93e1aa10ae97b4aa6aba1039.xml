@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 06:59:44</sys_created_on>
+        <sys_id>87ca149c93e1aa10ae97b4aa6aba1039</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>sys_atf_step_87ca149c93e1aa10ae97b4aa6aba1039</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-04 13:17:47</sys_updated_on>
+        <table/>
+        <test display_value="DataSilos - incident - ACL">b6bad09c93e1aa10ae97b4aa6aba100b</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=87ca149c93e1aa10ae97b4aa6aba1039"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>87ca149c93e1aa10ae97b4aa6aba1039</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 06:59:44</sys_created_on>
+        <sys_id>8fca149c93e1aa10ae97b4aa6aba103b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-12 06:59:44</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>87ca149c93e1aa10ae97b4aa6aba1039</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 06:59:44</sys_created_on>
+        <sys_id>c7ca149c93e1aa10ae97b4aa6aba103c</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-04 13:17:48</sys_updated_on>
+        <value>(function(outputs, steps, stepResult, assertEqual)&#13;
+{&#13;
+	var RenderValue = x_snc_devtools.RenderValue;&#13;
+	&#13;
+	AppSetProperty('active','true'); &#13;
+	AppSetProperty('tables.incident.active','true'); &#13;
+	AppSetProperty('tables.incident.columns.whitelist_trigger.sys_user_group',''); &#13;
+	AppSetProperty('tables.incident.columns.instant_access.sys_user','opened_by,caller_id'); &#13;
+	&#13;
+	&#13;
+	var testdata = new DataSilosTestDataAPI('_ATF_DATASILOS_');&#13;
+&#13;
+	var strUserSpectator = testdata.CreateUser('SPECTATOR',[]);&#13;
+	var strUserCaller = testdata.CreateUser('CALLER',['itil']);&#13;
+	var strUserItil = testdata.CreateUser('ITIL',['itil']);&#13;
+	var strUserIncidentRead = testdata.CreateUser('INCIDENT_READ',['sn_incident_read']);&#13;
+	&#13;
+	var strIncident = testdata.CreateIncident('TEST','CALLER','CALLER','');&#13;
+&#13;
+	var test = new x_snc_devtools.TestAPI(outputs, steps, stepResult, assertEqual);&#13;
+	&#13;
+	test.Log('\n\nBusiness Rule and ACL is active');&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserSpectator,'incident','',strIncident,false);&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserCaller,'incident','',strIncident,true);&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserItil,'incident','',strIncident,false);&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserIncidentRead,'incident','',strIncident,false);&#13;
+&#13;
+&#13;
+	test.Log('Business Rule is inactive and ACL is active');&#13;
+	x_snc_devtools.RecordSetValue('sys_script','a9b3e7301b946810a89720a8ec4bcb98','active',false);&#13;
+	test.Log(x_snc_devtools.GetRecord('sys_script','a9b3e7301b946810a89720a8ec4bcb98'));&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserSpectator,'incident','',strIncident,false);&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserCaller,'incident','',strIncident,true);&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserItil,'incident','',strIncident,false);	&#13;
+	test.TestCase_IsRecordAccessibleByUser(strUserIncidentRead,'incident','',strIncident,false);&#13;
+	&#13;
+	test.Log('\n\nBusiness Rule is inactive and ITIL ACL does NOT apply DataSilos filtering.');&#13;
+&#13;
+	var grACL = GetDataSilosACL('incident','');&#13;
+	if (grACL != false)&#13;
+	{&#13;
+		test.Log('\n\nBusiness Rule is inactive and DataSilos ACLs do NOT apply DataSilos filtering.');&#13;
+		x_snc_devtools.RecordSetValue('sys_security_acl',grACL.sys_id,'script','answer = true;',true);&#13;
+		test.Log(x_snc_devtools.GetRecord('sys_security_acl',grACL.sys_id));&#13;
+		test.TestCase_IsRecordAccessibleByUser(strUserSpectator,'incident','',strIncident,false);&#13;
+		test.TestCase_IsRecordAccessibleByUser(strUserCaller,'incident','',strIncident,true);&#13;
+		test.TestCase_IsRecordAccessibleByUser(strUserItil,'incident','',strIncident,true);	&#13;
+		test.TestCase_IsRecordAccessibleByUser(strUserIncidentRead,'incident','',strIncident,true);&#13;
+	}&#13;
+		&#13;
+	test.Log(RenderValue(testdata.GetAllData(),true));&#13;
+	&#13;
+	return test.GetResult();&#13;
+	&#13;
+})(outputs, steps, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

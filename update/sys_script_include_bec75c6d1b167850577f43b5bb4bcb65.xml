@@ -27,21 +27,18 @@
 	{
 		Log('MaintenanceACLsForTable: ['+strTable+']');
 
-		var grACL = new GlideRecord('sys_security_acl');
-		grACL.addQuery('name','=',strTable);
-		grACL.addActiveQuery();
-		grACL.addQuery('type','=','record');
-		grACL.addQuery('operation','=','read');
-		grACL.query();
-		if (grACL.getRowCount() == 0)
+		var grACL = GetDataSilosACL(strTable,'',true);
+		if (grACL == false)
 		{
 			Log('Did not find an ACL named '+strTable+' - so we need to add one!');
+			grACL = new GlideRecord('sys_security_acl');
 			grACL.initialize();
 			grACL.sys_scope = 'global';
 			grACL.name = strTable;
 			grACL.active = true;
 			grACL.operation = 'read';
-			grACL.description = 'Added during DataSilos installation';
+			grACL.description = 'Data'+'Silos';
+			grACL.decision_type = 'deny';
 			grACL.advanced = true;
 			grACL.script = ModifyACLScript('');
 			var bResult = GlideRecordInsert(grACL);
@@ -57,21 +54,18 @@
 		}	
 		
 		
-		var grACL = new GlideRecord('sys_security_acl');
-		grACL.addQuery('name','=',strTable+'.*');
-		grACL.addActiveQuery();
-		grACL.addQuery('type','=','record');
-		grACL.addQuery('operation','=','read');
-		grACL.query();
-		if (grACL.getRowCount() == 0)
+		var grACL = GetDataSilosACL(strTable,'*',true);
+		if (grACL == false)
 		{
 			Log('Did not find an ACL named '+strTable+'.* - so we need to add one!');
+			grACL = new GlideRecord('sys_security_acl');
 			grACL.initialize();
 			grACL.sys_scope = 'global';
 			grACL.name = strTable+'.*';
 			grACL.active = true;
 			grACL.operation = 'read';
-			grACL.description = 'Added during DataSilos installation';
+			grACL.description = 'Data'+'Silos';
+			grACL.decision_type = 'deny';
 			grACL.advanced = true;
 			grACL.script = ModifyACLScript('');
 			var bResult = GlideRecordInsert(grACL);
@@ -86,7 +80,7 @@
 			}
 		}
 			
-		
+/*		
 		var grACL = new GlideRecord('sys_security_acl');
 		var condition = grACL.addQuery('name','=',strTable);
 		condition.addOrCondition('name','=',strTable+'.*');
@@ -171,6 +165,7 @@
 				}
 			}
 		}
+		*/
 		
 	}
 	
@@ -185,13 +180,24 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-08-30 13:28:55</sys_created_on>
         <sys_id>bec75c6d1b167850577f43b5bb4bcb65</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>MaintenanceACLs</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_bec75c6d1b167850577f43b5bb4bcb65</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:39</sys_updated_on>
+        <sys_updated_on>2025-06-03 09:32:14</sys_updated_on>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>bec75c6d1b167850577f43b5bb4bcb65</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-12 08:35:19</sys_created_on>
+        <sys_id>97a074589365aa10ae97b4aa6aba1019</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-12 08:35:19</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

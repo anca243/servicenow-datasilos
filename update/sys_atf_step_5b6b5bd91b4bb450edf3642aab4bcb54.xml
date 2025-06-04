@@ -13,14 +13,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-10-06 15:54:14</sys_created_on>
         <sys_id>5b6b5bd91b4bb450edf3642aab4bcb54</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Run Server Side Script</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_5b6b5bd91b4bb450edf3642aab4bcb54</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-10-06 16:04:15</sys_updated_on>
+        <sys_updated_on>2025-05-12 16:04:27</sys_updated_on>
         <table/>
         <test display_value="DataSilos - ModifyACLScript">715bd7d91b4bb450edf3642aab4bcb59</test>
         <timeout/>
@@ -49,9 +49,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-10-06 15:54:14</sys_created_on>
         <sys_id>d91c5bd91b4bb450edf3642aab4bcb04</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-10-06 16:04:15</sys_updated_on>
+        <sys_updated_on>2025-05-12 16:04:28</sys_updated_on>
         <value>(function(outputs, steps, stepResult, assertEqual)&#13;
 {&#13;
 	var test = new x_snc_devtools.TestAPI(outputs, steps, stepResult, assertEqual);&#13;
@@ -71,7 +71,7 @@
 	}&#13;
 &#13;
 &#13;
-	var strExpected = "answer = x_snc_datasilos.ExecuteACL(current);";&#13;
+	var strExpected = "answer = "+GetCoreACLScript()+";";&#13;
 	TestCase_ModifyACLScript(null,strExpected);&#13;
 	TestCase_ModifyACLScript('',strExpected);&#13;
 	TestCase_ModifyACLScript('    ',strExpected);&#13;
@@ -82,7 +82,7 @@
 		+"bAnswer = SomeFunction();\n"&#13;
 		+"if (bAnswer == true)\n"&#13;
 		+"{\n"&#13;
-		+"\tbAnswer = x_snc_datasilos.ExecuteACL(current);\n"&#13;
+		+"\tbAnswer = "+GetCoreACLScript()+";\n"&#13;
 		+"}\n"&#13;
 		+"answer = bAnswer;";		&#13;
 	TestCase_ModifyACLScript("SomeFunction();",strExpected);&#13;
@@ -101,7 +101,7 @@
 			+"bAnswer = GetAnswer();\n"&#13;
 			+"if (bAnswer == true)\n"&#13;
 			+"{\n"&#13;
-			+"\tbAnswer = x_snc_datasilos.ExecuteACL(current);\n"&#13;
+			+"\tbAnswer = "+GetCoreACLScript()+";\n"&#13;
 			+"}\n"&#13;
 			+"answer = bAnswer;";	&#13;
 &#13;

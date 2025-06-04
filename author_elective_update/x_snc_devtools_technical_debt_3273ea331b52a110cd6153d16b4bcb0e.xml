@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_devtools_technical_debt">
+    <x_snc_devtools_technical_debt action="DELETE">
+        <description/>
+        <id/>
+        <short_description>Manual refers to using UpdateSets</short_description>
+        <switch>false</switch>
+        <sys_class_name>x_snc_devtools_technical_debt</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-04-26 11:58:08</sys_created_on>
+        <sys_id>3273ea331b52a110cd6153d16b4bcb0e</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Manual refers to using UpdateSets</sys_name>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_update_name>x_snc_devtools_technical_debt_3273ea331b52a110cd6153d16b4bcb0e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-13 13:23:01</sys_updated_on>
+    </x_snc_devtools_technical_debt>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</application>
+        <file_path/>
+        <instance_id>220092723b73421816e44a8aa4e45ab1</instance_id>
+        <instance_name>wildxanadu</instance_name>
+        <name>x_snc_devtools_technical_debt_3273ea331b52a110cd6153d16b4bcb0e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_devtools_technical_debt"><x_snc_devtools_technical_debt action="INSERT_OR_UPDATE"><description/><id/><short_description>Manual refers to using UpdateSets</short_description><switch>false</switch><sys_class_name>x_snc_devtools_technical_debt</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-04-26 11:58:08</sys_created_on><sys_id>3273ea331b52a110cd6153d16b4bcb0e</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Manual refers to using UpdateSets</sys_name><sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package><sys_policy/><sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope><sys_update_name>x_snc_devtools_technical_debt_3273ea331b52a110cd6153d16b4bcb0e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-05-13 13:23:01</sys_updated_on></x_snc_devtools_technical_debt></record_update>]]></payload>
+        <payload_hash>634137610</payload_hash>
+        <record_name>Manual refers to using UpdateSets</record_name>
+        <reverted_from/>
+        <source>001689099338a610959b7fda2bba100f</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-13 13:23:01</sys_created_on>
+        <sys_id>5f1cfee093adea10ae97b4aa6aba10b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196c9d01bea0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-13 13:23:01</sys_updated_on>
+        <type>Technical Debt</type>
+        <update_guid>531cfee0bdadea10a4b2d7beac64deb1</update_guid>
+        <update_guid_history>531cfee0bdadea10a4b2d7beac64deb1:634137610,e9f35c92d0da121015f2a7d3b0243e27:455889929</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Manual refers to using UpdateSets">be004fec93adea10ae97b4aa6aba1058</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-13 13:40:11</sys_created_on>
+        <sys_db_object display_value="" name="x_snc_devtools_technical_debt">x_snc_devtools_technical_debt</sys_db_object>
+        <sys_id>00b46986eeca46708002a3f135d4b5a9</sys_id>
+        <sys_metadata>3273ea331b52a110cd6153d16b4bcb0e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Manual refers to using UpdateSets</sys_name>
+        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope_delete display_value="">13d28564f033417896743d5e7fb82131</sys_scope_delete>
+        <sys_update_name>x_snc_devtools_technical_debt_3273ea331b52a110cd6153d16b4bcb0e</sys_update_name>
+        <sys_update_version display_value="x_snc_devtools_technical_debt_3273ea331b52a110cd6153d16b4bcb0e">5f1cfee093adea10ae97b4aa6aba10b1</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-13 13:40:11</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -22,7 +22,7 @@
         <runtime_access_tracking>permissive</runtime_access_tracking>
         <scope>x_snc_datasilos</scope>
         <scoped_administration>false</scoped_administration>
-        <short_description>A lightweight approach to data segregation</short_description>
+        <short_description>A lightweight approach to data segregation.</short_description>
         <source>x_snc_datasilos</source>
         <store_correlation_id/>
         <store_url/>
@@ -32,22 +32,22 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-02 12:13:32</sys_created_on>
         <sys_id>dafbffebdbb78450ba15a353059619eb</sys_id>
-        <sys_mod_count>95</sys_mod_count>
+        <sys_mod_count>99</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-07-27 07:42:24</sys_updated_on>
+        <sys_updated_on>2025-06-04 11:34:08</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <uninstall_blocked>false</uninstall_blocked>
         <user_role/>
         <vendor/>
         <vendor_prefix/>
-        <version>3.9.0</version>
+        <version>4.0.0</version>
         <x_snc_devtools_documentation_url>https://www.wildgrube.com/servicenow-datasilos</x_snc_devtools_documentation_url>
         <x_snc_devtools_maintainer>Sascha Wildgrube</x_snc_devtools_maintainer>
         <x_snc_devtools_maintainer_email>sascha.wildgrube@servicenow.com</x_snc_devtools_maintainer_email>
         <x_snc_devtools_repo_url>https://github.com/saschawildgrube/servicenow-datasilos.git</x_snc_devtools_repo_url>
         <x_snc_devtools_showstopper>false</x_snc_devtools_showstopper>
-        <x_snc_devtools_showstopper_details/>
+        <x_snc_devtools_showstopper_details>AppBuilderDataSilos() creates invalid sys_dictionary records.</x_snc_devtools_showstopper_details>
         <x_snc_wildgrubelab_test/>
         <x_snc_wildgrubelab_test2/>
     </sys_app>

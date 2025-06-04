@@ -35,4 +35,15 @@ MaintenanceDatabaseIndexes();]]></script>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>2d0f7525dbb43058bc44d844ca961934</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-03 09:35:12</sys_created_on>
+        <sys_id>c751965b93b1a610959b7fda2bba1017</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-03 09:35:12</sys_updated_on>
+        <table>sysauto_script</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
