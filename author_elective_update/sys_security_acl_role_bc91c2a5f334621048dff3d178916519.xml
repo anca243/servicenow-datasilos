@@ -17,7 +17,7 @@
     </sys_security_acl_role>
 <sys_update_version action="INSERT_OR_UPDATE">
         <action>DELETE</action>
-        <application display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</application>
+        <application display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</application>
         <file_path/>
         <instance_id>220092723b73421816e44a8aa4e45ab1</instance_id>
         <instance_name>wildxanadu</instance_name>
@@ -67,10 +67,10 @@
         <sys_metadata>bc91c2a5f334621048dff3d178916519</sys_metadata>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_datasilos_m2m_groups_datasilos.public</sys_name>
-        <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
+        <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_parent/>
         <sys_policy/>
-        <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
+        <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_scope_delete display_value="">13d28564f033417896743d5e7fb82131</sys_scope_delete>
         <sys_update_name>sys_security_acl_role_bc91c2a5f334621048dff3d178916519</sys_update_name>
         <sys_update_version display_value="sys_security_acl_role_bc91c2a5f334621048dff3d178916519">5d74ccd993256250959b7fda2bba1047</sys_update_version>
