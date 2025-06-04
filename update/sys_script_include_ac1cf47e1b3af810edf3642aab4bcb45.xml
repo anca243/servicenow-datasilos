@@ -608,7 +608,11 @@
 				grSA.sys_scope = strAppSysId;&#13;
 				grSA.active = true;&#13;
 				grSA.conditional = false;&#13;
-				grSA.run_as = '6816f79cc0a8016401c5a33be04be441'; // system admin&#13;
+				var grUser = GetTechnicalUser();&#13;
+				if (grUser != false)&#13;
+				{&#13;
+					grSA.run_as = grUser.sys_id;&#13;
+				}&#13;
 				grSA.run_dayofmonth = '1';&#13;
 				grSA.run_dayofweek = '1';&#13;
 				grSA.run_time = '1969-12-31 23:00:00';&#13;
@@ -1092,14 +1096,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-09-28 09:53:31</sys_created_on>
         <sys_id>ac1cf47e1b3af810edf3642aab4bcb45</sys_id>
-        <sys_mod_count>133</sys_mod_count>
+        <sys_mod_count>135</sys_mod_count>
         <sys_name>AppBuilderDataSilos</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_ac1cf47e1b3af810edf3642aab4bcb45</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-04 07:20:55</sys_updated_on>
+        <sys_updated_on>2025-06-04 07:30:05</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>ac1cf47e1b3af810edf3642aab4bcb45</id>
