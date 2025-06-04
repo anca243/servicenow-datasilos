@@ -13,14 +13,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-05-12 06:59:44</sys_created_on>
         <sys_id>87ca149c93e1aa10ae97b4aa6aba1039</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>Run Server Side Script</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_atf_step_87ca149c93e1aa10ae97b4aa6aba1039</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-12 10:00:58</sys_updated_on>
+        <sys_updated_on>2025-06-04 13:17:47</sys_updated_on>
         <table/>
         <test display_value="DataSilos - incident - ACL">b6bad09c93e1aa10ae97b4aa6aba100b</test>
         <timeout/>
@@ -49,9 +49,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-05-12 06:59:44</sys_created_on>
         <sys_id>c7ca149c93e1aa10ae97b4aa6aba103c</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-12 10:00:58</sys_updated_on>
+        <sys_updated_on>2025-06-04 13:17:48</sys_updated_on>
         <value>(function(outputs, steps, stepResult, assertEqual)&#13;
 {&#13;
 	var RenderValue = x_snc_devtools.RenderValue;&#13;
@@ -95,7 +95,7 @@
 	{&#13;
 		test.Log('\n\nBusiness Rule is inactive and DataSilos ACLs do NOT apply DataSilos filtering.');&#13;
 		x_snc_devtools.RecordSetValue('sys_security_acl',grACL.sys_id,'script','answer = true;',true);&#13;
-		test.Log(grACL);&#13;
+		test.Log(x_snc_devtools.GetRecord('sys_security_acl',grACL.sys_id));&#13;
 		test.TestCase_IsRecordAccessibleByUser(strUserSpectator,'incident','',strIncident,false);&#13;
 		test.TestCase_IsRecordAccessibleByUser(strUserCaller,'incident','',strIncident,true);&#13;
 		test.TestCase_IsRecordAccessibleByUser(strUserItil,'incident','',strIncident,true);	&#13;
