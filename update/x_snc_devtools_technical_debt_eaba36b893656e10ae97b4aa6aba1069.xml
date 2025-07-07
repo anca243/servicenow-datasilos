@@ -4,6 +4,7 @@
 DataSilos test coverage is extensive and all of its functions are validated through ATF.&#13;
 However it does not comply with the requirement that a dedicated ATF test exists for each Script Include. This is being worked on and will likely be addressed in future releases.</description>
         <id/>
+        <related_backlog_item_url/>
         <short_description>CodeSanity Findings</short_description>
         <switch>false</switch>
         <sys_class_name>x_snc_devtools_technical_debt</sys_class_name>
