@@ -2,6 +2,7 @@
     <x_snc_devtools_technical_debt action="INSERT_OR_UPDATE">
         <description>Under unclear circumstances using AppBuilderDataSilos() leads to the creation sys_dictionary records on non-existing tables and empty sys_scope and  sys_package fields. These records do not harm, but should not be created either.</description>
         <id/>
+        <related_backlog_item_url/>
         <short_description>Rouge Dictionary Records</short_description>
         <switch>false</switch>
         <sys_class_name>x_snc_devtools_technical_debt</sys_class_name>

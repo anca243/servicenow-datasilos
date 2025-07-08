@@ -16,6 +16,7 @@
 	var GetStringValue = x_snc_devtools.GetStringValue;
 	var GetArrayValue = x_snc_devtools.GetArrayValue;
 	var IsValidSysId = x_snc_devtools.IsValidSysId;
+	var IsValidFunction = x_snc_devtools.IsValidFunction;
 	
 	strPrefix = GetStringValue(strPrefix);
 	strTable = GetStringValue(strTable);
@@ -45,6 +46,31 @@
 	var aUserFulfillerSilos = GetSilosFromUserByTypes(strUserSysId,['fulfiller']);
 	var aUserGroups = GetGroupsFromUser(strUserSysId);
 	
+
+	var gsep = new GlideScriptedExtensionPoint();
+	var eps = gsep.getExtensions('DataSilos');
+	for (var nEP = 0; nEP < eps.length; nEP++)
+	{
+		var ep = eps[nEP];
+		if (IsValidFunction(ep.PrepareQuery))
+		{
+			var bSuccess = ep.PrepareQuery(
+				record,
+				strTable,
+				strPrefix,
+				strUserSysId,
+				bAllowEmptySysId,
+				aUserSupervisorSilos,
+				aUserFulfillerSilos,
+				aUserGroups,
+				nUserSecurityClearance);
+			if (bSuccess == true)
+			{
+				return true;
+			}
+		}
+	}	
+
 	return PrepareQueryInternal(
 		record,
 		strTable,
@@ -60,13 +86,24 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-27 09:04:40</sys_created_on>
         <sys_id>046080bb1b94d010a89720a8ec4bcb32</sys_id>
-        <sys_mod_count>58</sys_mod_count>
+        <sys_mod_count>59</sys_mod_count>
         <sys_name>PrepareQuery</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_046080bb1b94d010a89720a8ec4bcb32</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:28</sys_updated_on>
+        <sys_updated_on>2025-07-07 18:14:38</sys_updated_on>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>046080bb1b94d010a89720a8ec4bcb32</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-07 18:14:37</sys_created_on>
+        <sys_id>df4e03da93ae2210ae97b4aa6aba1058</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-07 18:14:37</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

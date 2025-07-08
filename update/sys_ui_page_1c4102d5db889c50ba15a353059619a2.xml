@@ -420,7 +420,7 @@ while (grBR.next())
 	<h3>Dependencies</h3>
 	<g2:no_escape>$[docapi.RenderDependencies()]</g2:no_escape>		
 
-	<h3>Technical Debts</h3>
+	<h3>Technical Debt</h3>
 	<g2:no_escape>$[docapi.RenderTechnicalDebts()]</g2:no_escape>		
 	
 	<h3>Table Columns</h3>
@@ -595,6 +595,14 @@ DataSilos - incident_task - cross-silo
 
 	
 	<h2>Release Notes</h2>
+
+	<h3>4.1.0 - 2025-07-08</h3>
+	<ol>
+		<li>DevTools 1.128.0 is now required.</li>
+		<li>The DataSilos Extension Point now supports the PrepareQuery() function.</li>
+		<li>Added ATF test for CreateTestData().</li>
+	</ol>
+
 
 	<h3>4.0.0 - 2025-06-04</h3>
 	<ol>
@@ -1038,14 +1046,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>740</sys_mod_count>
+        <sys_mod_count>745</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-04 16:24:00</sys_updated_on>
+        <sys_updated_on>2025-07-08 08:27:11</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
