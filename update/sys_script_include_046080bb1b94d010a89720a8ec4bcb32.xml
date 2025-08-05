@@ -94,6 +94,7 @@
         <sys_update_name>sys_script_include_046080bb1b94d010a89720a8ec4bcb32</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2025-07-07 18:14:38</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>046080bb1b94d010a89720a8ec4bcb32</id>

@@ -13,6 +13,8 @@
 {
 	var GetUserRecord = x_snc_devtools.GetUserRecord;
 	var IsValidRecord = x_snc_devtools.IsValidRecord;
+	var GetDefaultTechnicalUser = x_snc_devtools.GetDefaultTechnicalUser;
+
 	
 	var grUser = GetUserRecord('technical.datasilos');
 	if (IsValidRecord(grUser))
@@ -20,32 +22,21 @@
 		return grUser;
 	}
 
-	var grUser = GetUserRecord('technical.default');
-	if (IsValidRecord(grUser))
-	{
-		return grUser;
-	}
-
-	var grUser = GetUserRecord('admin');
-	if (IsValidRecord(grUser))
-	{
-		return grUser;
-	}
-	
-	return false; 
+	return GetDefaultTechnicalUser();
 }]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-06-04 07:23:55</sys_created_on>
         <sys_id>3c6cf6a79379e610959b7fda2bba10bd</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>GetTechnicalUser</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_3c6cf6a79379e610959b7fda2bba10bd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-04 16:26:20</sys_updated_on>
+        <sys_updated_on>2025-08-05 15:16:15</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>3c6cf6a79379e610959b7fda2bba10bd</id>
