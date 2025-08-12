@@ -11,7 +11,7 @@
         <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetConfig()
 {
-	var IsValidFunction = x_snc_devtools.IsValidFunction;
+	var IsFunction = x_snc_devtools.IsFunction;
 	
 	var transactionCache = new x_snc_devtools.TransactionCacheAPI('DATASILOS');
 	var config = transactionCache.GetItem('config');
@@ -23,7 +23,7 @@
 		for (var nEP = 0; nEP < eps.length; nEP++)
 		{
 			var ep = eps[nEP];
-			if (IsValidFunction(ep.GetConfig))
+			if (IsFunction(ep.GetConfig))
 			{
 				var configPlugin = ep.GetConfig(config);
 				if (configPlugin != false)
@@ -41,14 +41,25 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-08-19 11:34:25</sys_created_on>
         <sys_id>3e972b50db76d890ba15a3530596191e</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>GetConfig</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_3e972b50db76d890ba15a3530596191e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:35</sys_updated_on>
+        <sys_updated_on>2025-08-11 07:50:45</sys_updated_on>
         <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>3e972b50db76d890ba15a3530596191e</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-11 07:50:45</sys_created_on>
+        <sys_id>a12f052593d32210959b7fda2bba1031</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-11 07:50:45</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
