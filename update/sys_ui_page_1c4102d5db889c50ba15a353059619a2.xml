@@ -21,7 +21,8 @@
 	
 	<p><b><span style="color: red;">Please take note of the specific instructions on migrating from version 3 (or earlier) to version 4.</span></b></p>
 
-
+	<h2>Table of Contents</h2>
+	<g2:no_escape>$[x_snc_devtools.HtmlRenderTableOfContents()]</g2:no_escape>	
 
 	<h2>Disclaimer</h2> 
 	<g2:no_escape>$[docapi.RenderDisclaimer()]</g2:no_escape>
@@ -203,7 +204,7 @@
 		<li>It is strongly recommended to use specific test users and test groups for functional testing. Do not reuse users or groups from other tests!</li>
 	</ol>
 
-	<h3>Migrating from version 3 (or earlier) to version 4.</h3>
+	<h3>Migrating from version 3 (or earlier) to version 4</h3>
 	<p>In Washington, a new kind of ACL was introduced: the "Deny Unless" ACL.</p>
 	<p>The ACLs allow the construction of AND combined conditions to grant or deny access to a resource - like "read" access to tables.</p>
 	<p>This new kind of ACL simplifies the mechanism by which DataSilos applies its access regime to records. In the past (prior to the introduction of "Deny Unless" ACLs) EVERY ACL on a table granting "read" access had to be modified to inject the AND condition to whatever other existing access rule.</p>
@@ -596,12 +597,13 @@ DataSilos - incident_task - cross-silo
 	<g2:no_escape>$[docapi.RenderLicense()]</g2:no_escape>
 
 	
-	<h2>Release Notes</h2>
+	<h2 toc-ignore-children="true">Release Notes</h2>
 
 	<h3>4.2.0 - TODO</h3>
 	<ol>
 		<li>DevTools 1.131.0 is now required.</li>
 		<li>Fixed a defect in MaintenanceDatabaseViews() that would cause the execution to fail if no columns are defined for instance access on a table that is part of a database view that has defined fields.</li>
+		<li>Added table of contents to manual.</li>
 		<li>Improved chapter "Extension of Scope" in manual.</li>
 	</ol>
 
@@ -1056,14 +1058,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>748</sys_mod_count>
+        <sys_mod_count>752</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-13 13:31:29</sys_updated_on>
+        <sys_updated_on>2025-08-13 13:35:21</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
