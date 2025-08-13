@@ -21,6 +21,8 @@
 	
 	<p><b><span style="color: red;">Please take note of the specific instructions on migrating from version 3 (or earlier) to version 4.</span></b></p>
 
+
+
 	<h2>Disclaimer</h2> 
 	<g2:no_escape>$[docapi.RenderDisclaimer()]</g2:no_escape>
 	
@@ -563,9 +565,9 @@ x_snc_datasilos.Log('After DeleteAllData(): '+x_snc_devtools.RenderValue(testdat
 		]</g2:no_escape>
 
 		<li>Modify or add your specific code in script include "DataSilosGetConfig". For example, you can specifiy fields that reference users or groups which should impact the visibility of records. You can also modify the configuration of tables which are supported by DataSilos directly. Please note that the modifications to the config object are applied AFTER system properties are read. That means that your implementation has full control over the actual configuration and can override system properties - that may be convenient during development, but it may be confusing for operations teams.</li>
-		<li>Modify or add your specific code in script include "DataSilosGetRelatedRecords". Use this function to identify records that are related to a record. By specifying related records you can automatically derive visibility from one record to be applied to its related records (e.g. the task records associated to a story record, etc.).</li>
 		<li>Modify or add your specific code in script include "DataSilosRecordInsert" to specify what should happen when a record is inserted. If the default behavior should be applied to a table, no implementation is required.</li>
 		<li>Modify or add your specific code in script include "DataSilosRecordUpdate" to specify what should happen when a record is updated or maintained on a regular basis. If the default behavior should be applied to a table, no implementation is required.</li>
+		<li>Modify or add your specific code in script include "DataSilosGetRelatedRecords". Use this function to identify records that are related to a record. By specifying related records you can automatically derive visibility from one record to be applied to its related records (e.g. the task records associated to a story record, etc.).</li>
 		<li>Modify the DataSilos UI list view for the supported tables. It is recommended at add all columns that can help operations teams to understand whether a record should or should not be visible to a user. Whatever column is being used in your visibility rules should be displayed in your UI list view.</li>
 		<li>Create ATF tests. The following tests can (and should) be used as templates:</li>
 <pre>
@@ -600,6 +602,7 @@ DataSilos - incident_task - cross-silo
 	<ol>
 		<li>DevTools 1.131.0 is now required.</li>
 		<li>Fixed a defect in MaintenanceDatabaseViews() that would cause the execution to fail if no columns are defined for instance access on a table that is part of a database view that has defined fields.</li>
+		<li>Improved chapter "Extension of Scope" in manual.</li>
 	</ol>
 
 
@@ -1053,14 +1056,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>747</sys_mod_count>
+        <sys_mod_count>748</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-12 09:34:37</sys_updated_on>
+        <sys_updated_on>2025-08-13 13:31:29</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
