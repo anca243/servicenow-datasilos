@@ -5,6 +5,7 @@
         <advanced>false</advanced>
         <applies_to/>
         <condition/>
+        <controlled_by_refs/>
         <decision_type>allow</decision_type>
         <description>Allow read for x_snc_datasilos_group_whitelist in sc_req_item, for users with role x_snc_datasilos.manager.</description>
         <local_or_existing/>

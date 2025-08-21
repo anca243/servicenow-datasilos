@@ -58,7 +58,7 @@
         <update_guid_history>d974ccd9f2256250caa7320ed9250e6d:0,88a2405532256250f8fb9ccd84416b8c:-150902532,f2320015522562503e80e90ee4436e30:0,9f40085da2e162507de9573b9f1f9f56:267268285,fd40845de1e1625083a674c1a93cc72a:1357593395,7540845dcfe162500f9d81963aca2f28:-1275338951</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="change_request.x_snc_datasilos_global.x_snc_datasilos.manager">ac05845193656250959b7fda2bba10f5</sys_audit_delete>
+        <sys_audit_delete display_value="">ac05845193656250959b7fda2bba10f5</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>@@snc_write_audit@@</sys_created_by>
         <sys_created_on>2025-05-15 07:58:28</sys_created_on>

@@ -58,7 +58,7 @@
         <update_guid_history>c974ccd9cc2562504ea2c78e46e78611:0,2f9200553825625030356728705d5ae6:1932906716,6632ccd10e256250c3a919b58852b1ed:0,7640c45d68e1625020ecf01fc79c1a6c:1256471991,9d40445d76e16250160695c76601743f:1689978859,1540445dece16250bc22983ea60edf3d:677036121</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="incident_task.x_snc_datasilos_ghost.x_snc_datasilos.manager">0805c05193656250959b7fda2bba10ce</sys_audit_delete>
+        <sys_audit_delete display_value="">0805c05193656250959b7fda2bba10ce</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>@@snc_write_audit@@</sys_created_by>
         <sys_created_on>2025-05-15 07:58:26</sys_created_on>
