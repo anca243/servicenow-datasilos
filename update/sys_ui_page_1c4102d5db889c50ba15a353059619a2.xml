@@ -419,13 +419,7 @@ while (grBR.next())
 
 	<h3>Tables</h3>
 	<g2:no_escape>$[docapi.RenderTables()]</g2:no_escape>		
-	
-	<h3>Dependencies</h3>
-	<g2:no_escape>$[docapi.RenderDependencies()]</g2:no_escape>		
 
-	<h3>Technical Debt</h3>
-	<g2:no_escape>$[docapi.RenderTechnicalDebts()]</g2:no_escape>		
-	
 	<h3>Table Columns</h3>
 	<p>Each supported table is equipped with several new columns to support DataSilos filtering:</p>
 	<ul>
@@ -437,7 +431,8 @@ while (grBR.next())
 		<li><b>x_snc_datasilos_ghost</b>&#160;The ghost flag controls if the record's whitelists should be updated. If set to false, whitelists are populated. If the ghost flag is true, whitelists remain unchanged. This allows custom implementations to control the whitelist population. If this flag is set to true, the record behaves in the same way as if it was changed by a user with the x_snc_datasilos.ghost role.</li>
 		<li><b>x_snc_datasilos_last_maintenance</b>&#160;The last maintenance field stores the last point in time when the record has been "maintained" - that is when the corresponding scheduled maintenance job applied the visibility rules to the record.</li>
 	</ul>
-	
+
+
 	<h2>FAQ</h2>
 	<h3>What happens if a user is not associated to any group?</h3>
 	<p>The user will only see records that they created (opened_by) or which have been created on their behalf (caller_id). Those users will not see any other records unless that user has the admin role or the x_snc_datasilos.sentinel role.</p>
@@ -592,6 +587,13 @@ DataSilos - incident_task - cross-silo
 	<p>DataSilos uses the following customized Test Step Configurations:</p>
 	<g2:no_escape>$[docapi.RenderTestStepConfigurations()]</g2:no_escape>
 	
+	<h2>Dependencies</h2>
+	<g2:no_escape>$[docapi.RenderDependencies()]</g2:no_escape>		
+
+	<h2>Technical Debt</h2>
+	<g2:no_escape>$[docapi.RenderTechnicalDebt()]</g2:no_escape>		
+
+
 	<h2>License</h2>
 	<g2:no_escape>$[docapi.RenderCopyright(2020,'Sascha Wildgrube')]</g2:no_escape>
 	<g2:no_escape>$[docapi.RenderLicense()]</g2:no_escape>
@@ -603,6 +605,7 @@ DataSilos - incident_task - cross-silo
 	<ol>
 		<li>DevTools 1.131.0 is now required.</li>
 		<li>Fixed a defect in MaintenanceDatabaseViews() that would cause the execution to fail if no columns are defined for instance access on a table that is part of a database view that has defined fields.</li>
+		<li>Added ACL for DataSilosClientAPI Script Include.</li>
 		<li>Added table of contents to manual.</li>
 		<li>Improved chapter "Extension of Scope" in manual.</li>
 	</ol>
@@ -1058,14 +1061,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>753</sys_mod_count>
+        <sys_mod_count>756</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-21 15:58:55</sys_updated_on>
+        <sys_updated_on>2025-08-26 10:50:07</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
