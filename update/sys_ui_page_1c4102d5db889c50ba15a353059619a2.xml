@@ -607,6 +607,7 @@ DataSilos - incident_task - cross-silo
 		<li>Xanadu is no longer actively supported.</li>
 		<li>DataSilos has been fully tested with Zurich.</li>	
 		<li>The DataSilos Extension Point now supports the AccessAnalysis() function - this allows an extension app to modify the explanation to be displayed when using the "DataSilos Access Analysis" UI Action.</li>
+		<li>AppBuilderDataSilos() now adds more boilerplate code to the DataSilosGetRelatedRecords() function.</li>
 		<li>Fixed a defect in MaintenanceDatabaseViews() that would cause the execution to fail if no columns are defined for instance access on a table that is part of a database view that has defined fields.</li>
 		<li>Status page now also contains links to Maintenance Jobs.</li> 
 		<li>Status page now also contains links to Data Policies.</li> 
@@ -619,7 +620,7 @@ DataSilos - incident_task - cross-silo
 		<li>Added ATF test for RecordUpdateWhitelistsFromGroupByTypes().</li>
 		<li>Added table of contents to manual.</li>
 		<li>An application that extends DataSilos capabilities is now called a "DataSilos Extension Application".</li>
-		<li>Renamed chapter "Extension of Scope" to "Building DataSIlos Extension Applications" in the manual.</li>
+		<li>Renamed chapter "Extension of Scope" to "Building DataSilos Extension Applications" in the manual.</li>
 		<li>Improved chapter "Building DataSIlos Extension Applications" in manual.</li>
 		<li>Replaced all use of deprecated IsValidFunction() by IsFunction().</li>
 	</ol>
@@ -1075,14 +1076,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>767</sys_mod_count>
+        <sys_mod_count>768</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos WORK IN PROGRESS" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos WORK IN PROGRESS">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-08-28 11:50:54</sys_updated_on>
+        <sys_updated_on>2025-08-28 12:10:55</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>
