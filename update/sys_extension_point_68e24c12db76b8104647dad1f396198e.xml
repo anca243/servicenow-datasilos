@@ -9,8 +9,8 @@ DataSilos.prototype = {
 
     GetConfig: function(config)
 	{
-		var IsValidFunction = x_snc_devtools.IsValidFunction;
-		if (IsActive() && IsValidFunction(x_this_app_scope.DataSilosGetConfig))
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosGetConfig))
 		{
 			config = DataSilosGetConfig(config);
 		}
@@ -19,8 +19,8 @@ DataSilos.prototype = {
 	
     GetRelatedRecords: function(record)
 	{
-		var IsValidFunction = x_snc_devtools.IsValidFunction;
-		if (IsActive() && IsValidFunction(x_this_app_scope.DataSilosGetRelatedRecords))
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosGetRelatedRecords))
 		{
 			return DataSilosGetRelatedRecords(record);
 		}
@@ -29,8 +29,8 @@ DataSilos.prototype = {
 
     RecordInsert: function(record)
 	{
-		var IsValidFunction = x_snc_devtools.IsValidFunction;
-		if (IsActive() && IsValidFunction(x_this_app_scope.DataSilosRecordInsert))
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosRecordInsert))
 		{
 			return DataSilosRecordInsert(record);
 		}
@@ -39,8 +39,8 @@ DataSilos.prototype = {
 	
     RecordUpdate: function(record)
 	{
-		var IsValidFunction = x_snc_devtools.IsValidFunction;
-		if (IsActive() && IsValidFunction(x_this_app_scope.DataSilosRecordUpdate))
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosRecordUpdate))
 		{
 			return DataSilosRecordUpdate(record);
 		}
@@ -49,8 +49,8 @@ DataSilos.prototype = {
 	
     GetStatus: function(status)
 	{
-		var IsValidFunction = x_snc_devtools.IsValidFunction;
-		if (IsActive() && IsValidFunction(x_this_app_scope.DataSilosGetStatus))
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosGetStatus))
 		{
 			status = DataSilosGetStatus(status);
 		}
@@ -67,8 +67,8 @@ DataSilos.prototype = {
 		aUserGroups,
 		nUserSecurityClearance)
 	{
-		var IsValidFunction = x_snc_devtools.IsValidFunction;
-		if (IsActive() && IsValidFunction(x_this_app_scope.DataSilosPrepareQuery))
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosPrepareQuery))
 		{
 			return DataSilosPrepareQuery(record,
 				strTable,
@@ -81,7 +81,17 @@ DataSilos.prototype = {
 				nUserSecurityClearance);
 		}
         return false;
-    },			
+    },		
+
+    AccessAnalysis: function(result)
+	{
+		var IsFunction = x_snc_devtools.IsFunction;
+		if (IsActive() && IsFunction(x_this_app_scope.DataSilosAccessAnalysis))
+		{
+			result = DataSilosAccessAnalysis(result);
+		}
+        return result;
+    },		
 
     type: 'DataSilos'
 };]]></example>
@@ -91,14 +101,14 @@ DataSilos.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-09-26 16:25:11</sys_created_on>
         <sys_id>68e24c12db76b8104647dad1f396198e</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>DataSilos</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_extension_point_68e24c12db76b8104647dad1f396198e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-07-07 18:20:11</sys_updated_on>
+        <sys_updated_on>2025-08-28 11:12:39</sys_updated_on>
     </sys_extension_point>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>68e24c12db76b8104647dad1f396198e</id>

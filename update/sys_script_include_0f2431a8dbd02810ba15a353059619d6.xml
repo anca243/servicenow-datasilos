@@ -78,5 +78,6 @@ Configuration allows to skip the query based filtering in case of expensive quer
         <sys_update_name>sys_script_include_0f2431a8dbd02810ba15a353059619d6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2025-05-02 14:17:30</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
 </record_update>

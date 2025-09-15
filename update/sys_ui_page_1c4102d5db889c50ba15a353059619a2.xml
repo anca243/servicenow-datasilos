@@ -21,6 +21,9 @@
 	
 	<p><b><span style="color: red;">Please take note of the specific instructions on migrating from version 3 (or earlier) to version 4.</span></b></p>
 
+	<h2>Table of Contents</h2>
+	<g2:no_escape>$[x_snc_devtools.HtmlRenderTableOfContents()]</g2:no_escape>	
+
 	<h2>Disclaimer</h2> 
 	<g2:no_escape>$[docapi.RenderDisclaimer()]</g2:no_escape>
 	
@@ -78,7 +81,7 @@
 	<ul>
 		<g2:no_escape>$[
 			docapi.RenderSystemRequirements(
-				'Xanadu,Yokohama',
+				'Yokohama,Zurich',
 				true,
 				AppGetDependencies());
 		]</g2:no_escape>	
@@ -189,7 +192,7 @@
 		<li>As the one responsible for reporting and performance analytics I want to make sure that reports and dashboards work as expected.</li>
 	</ol>
 	<h3>Preparing Validation</h3>
-	<p>The following spects should be considered for testing and validation:</p>
+	<p>The following aspects should be considered for testing and validation:</p>
 	<ol>
 		<li>DataSilos modifies queries being sent to the database in order to implement the visibility filtering. These modifications come at a performance cost. Depending on how many teams (and silos) a user is a member of and depending on how many records are in the table, the performance impact might be visible to users. IT IS STRONGLY RECOMMENDED TO PERFORM A REALISTIC LOAD TEST! A simulation of actual user behavior in a production-like instance with production-like configuration can show if the performance impact is acceptable.</li>
 		<li>It is recommended to identify pages and views that are most frequently used by users - both for automated and manual user acceptance testing.</li> 
@@ -201,7 +204,7 @@
 		<li>It is strongly recommended to use specific test users and test groups for functional testing. Do not reuse users or groups from other tests!</li>
 	</ol>
 
-	<h3>Migrating from version 3 (or earlier) to version 4.</h3>
+	<h3>Migrating from version 3 (or earlier) to version 4</h3>
 	<p>In Washington, a new kind of ACL was introduced: the "Deny Unless" ACL.</p>
 	<p>The ACLs allow the construction of AND combined conditions to grant or deny access to a resource - like "read" access to tables.</p>
 	<p>This new kind of ACL simplifies the mechanism by which DataSilos applies its access regime to records. In the past (prior to the introduction of "Deny Unless" ACLs) EVERY ACL on a table granting "read" access had to be modified to inject the AND condition to whatever other existing access rule.</p>
@@ -238,7 +241,7 @@ answer = bAnswer;</pre>
 		
 
 	<h3>Installation</h3>
-	<p>Before installing, verify if there is a plugin scoped app that contains specific customizations and additions relevant to your organization's instance and which may come with its own installation instructions. In such cases, follow the installation instructions shipped with the custom scoped app.</p>
+	<p>Before installing, verify if there is a DataSilos Extension app that contains specific customizations and additions relevant to your organization's instance and which may come with its own installation instructions. In such cases, follow the installation instructions shipped with the custom scoped app.</p>
 	<p>Please note that is it NOT RECOMMENDED to deploy DataSilos and related scoped apps using update sets. Use source control instead!</p>
 	<ol>
 		<g2:no_escape>$[
@@ -416,13 +419,7 @@ while (grBR.next())
 
 	<h3>Tables</h3>
 	<g2:no_escape>$[docapi.RenderTables()]</g2:no_escape>		
-	
-	<h3>Dependencies</h3>
-	<g2:no_escape>$[docapi.RenderDependencies()]</g2:no_escape>		
 
-	<h3>Technical Debt</h3>
-	<g2:no_escape>$[docapi.RenderTechnicalDebts()]</g2:no_escape>		
-	
 	<h3>Table Columns</h3>
 	<p>Each supported table is equipped with several new columns to support DataSilos filtering:</p>
 	<ul>
@@ -434,7 +431,8 @@ while (grBR.next())
 		<li><b>x_snc_datasilos_ghost</b>&#160;The ghost flag controls if the record's whitelists should be updated. If set to false, whitelists are populated. If the ghost flag is true, whitelists remain unchanged. This allows custom implementations to control the whitelist population. If this flag is set to true, the record behaves in the same way as if it was changed by a user with the x_snc_datasilos.ghost role.</li>
 		<li><b>x_snc_datasilos_last_maintenance</b>&#160;The last maintenance field stores the last point in time when the record has been "maintained" - that is when the corresponding scheduled maintenance job applied the visibility rules to the record.</li>
 	</ul>
-	
+
+
 	<h2>FAQ</h2>
 	<h3>What happens if a user is not associated to any group?</h3>
 	<p>The user will only see records that they created (opened_by) or which have been created on their behalf (caller_id). Those users will not see any other records unless that user has the admin role or the x_snc_datasilos.sentinel role.</p>
@@ -525,8 +523,8 @@ x_snc_datasilos.Log('After DeleteAllData(): '+x_snc_devtools.RenderValue(testdat
 	<h4>Extension Points</h4>
 	<g2:no_escape>$[docapi.RenderExtensionPoints()]</g2:no_escape>		
 	
-	<h3>Extension of Scope</h3> 
-	<p>You can extend the scope of the DataSilos application by adding the filtering logic to more tables. You might also modify the regular behavior of DataSilos when working with tables already supported by DataSilos. In either scenario you need to create a DataSilos plugin application. Before you start the implementation, perform the following steps:</p>
+	<h3>Building DataSilos Extension Applications</h3> 
+	<p>You can extend the coverage and behaviour of DataSilos by adding the filtering logic to more tables or modify how whitelists are populated. You might also modify the regular behavior of DataSilos when working with tables already supported by DataSilos. In either scenario you need to create a DataSilos Extension Application. Before you start the implementation, perform the following steps:</p>
 	<ol>
 		<li>Check if there is a more recent version of DataSilos available that may already cover your requirements.</li>
 		<li>Get in touch with the author of the DataSilos application and check if there is work in progress on a new version of DataSilos. Eventually analysis or development work can be re-used or at least knowledge can be shared. Maybe the feature you are considering is already being worked on.</li>
@@ -535,7 +533,7 @@ x_snc_datasilos.Log('After DeleteAllData(): '+x_snc_devtools.RenderValue(testdat
 		<li>Identify data sources. Is it based on manual input from users or is data provided via integrations?</li>
 		<li>Verify if these sources provide the necessary details that are required to derive the visibility rules.</li>
 	</ol>
-	<p>After a decision has been made to create a DataSilos plugin application perform the following steps:</p>
+	<p>After a decision has been made to create a DataSilos Extension Application perform the following steps:</p>
 	<ol>
 		<li>Create a new scoped application in Studio.</li>
 		<li>Identify the affected tables</li>
@@ -556,16 +554,16 @@ x_snc_datasilos.Log('After DeleteAllData(): '+x_snc_devtools.RenderValue(testdat
 </pre>
 		<li>Replace "x_abc_your_app_scope" by the actual app scope identifier.</li>
 		<li>Replace "Your App" with a suitable caption for the sub menu within the DataSilos menu.</li>
-		<li>Replace "20000" with a reasonable order number where the sub menu should be positioned. Values must be equal or greater than 10000. Please note that if other developers who create DataSilos plugins make the same or very similar choices, there might be collisions - but they can easily be resolved later.</li>
+		<li>Replace "20000" with a reasonable order number where the sub menu should be positioned. Values must be equal or greater than 10000. Please note that if other developers who create DataSilos Extension Applications make the same or very similar choices, there might be collisions - but they can easily be resolved later.</li>
 		<li>Add the tables to be supported into the array. Note that you do not need to add tables which are already supported by DataSilos in order to implement deviating behavior for visibility rules. Also keep in mind that if a parent table is already supported, you should not add any derived tables either.</li>			
 		<g2:no_escape>$[
-			docapi.RenderInstallationInstructionsBackgroundScript('Now build the boiler-plate code and prepare the implementation of your new DataSilos plugin application. Replace x_abc_your_app_scope by the actual scope identifier of your new application.', 'x_abc_your_app_scope.AppBuilder();', 'x_abc_your_app_scope');
+			docapi.RenderInstallationInstructionsBackgroundScript('Now build the boiler-plate code and prepare the implementation of your new DataSilos Extension Application. Replace x_abc_your_app_scope by the actual scope identifier of your new application.', 'x_abc_your_app_scope.AppBuilder();', 'x_abc_your_app_scope');
 		]</g2:no_escape>
 
 		<li>Modify or add your specific code in script include "DataSilosGetConfig". For example, you can specifiy fields that reference users or groups which should impact the visibility of records. You can also modify the configuration of tables which are supported by DataSilos directly. Please note that the modifications to the config object are applied AFTER system properties are read. That means that your implementation has full control over the actual configuration and can override system properties - that may be convenient during development, but it may be confusing for operations teams.</li>
-		<li>Modify or add your specific code in script include "DataSilosGetRelatedRecords". Use this function to identify records that are related to a record. By specifying related records you can automatically derive visibility from one record to be applied to its related records (e.g. the task records associated to a story record, etc.).</li>
 		<li>Modify or add your specific code in script include "DataSilosRecordInsert" to specify what should happen when a record is inserted. If the default behavior should be applied to a table, no implementation is required.</li>
 		<li>Modify or add your specific code in script include "DataSilosRecordUpdate" to specify what should happen when a record is updated or maintained on a regular basis. If the default behavior should be applied to a table, no implementation is required.</li>
+		<li>Modify or add your specific code in script include "DataSilosGetRelatedRecords". Use this function to identify records that are related to a record. By specifying related records you can automatically derive visibility from one record to be applied to its related records (e.g. the task records associated to a story record, etc.).</li>
 		<li>Modify the DataSilos UI list view for the supported tables. It is recommended at add all columns that can help operations teams to understand whether a record should or should not be visible to a user. Whatever column is being used in your visibility rules should be displayed in your UI list view.</li>
 		<li>Create ATF tests. The following tests can (and should) be used as templates:</li>
 <pre>
@@ -589,12 +587,45 @@ DataSilos - incident_task - cross-silo
 	<p>DataSilos uses the following customized Test Step Configurations:</p>
 	<g2:no_escape>$[docapi.RenderTestStepConfigurations()]</g2:no_escape>
 	
+	<h2>Dependencies</h2>
+	<g2:no_escape>$[docapi.RenderDependencies()]</g2:no_escape>		
+
+	<h2>Technical Debt</h2>
+	<g2:no_escape>$[docapi.RenderTechnicalDebt()]</g2:no_escape>		
+
+
 	<h2>License</h2>
 	<g2:no_escape>$[docapi.RenderCopyright(2020,'Sascha Wildgrube')]</g2:no_escape>
 	<g2:no_escape>$[docapi.RenderLicense()]</g2:no_escape>
 
 	
-	<h2>Release Notes</h2>
+	<h2 toc-ignore-children="true">Release Notes</h2>
+
+	<h3>4.2.0 - 2025-09-15</h3>
+	<ol>
+		<li>DevTools 1.132.0 is now required.</li>
+		<li>Xanadu is no longer actively supported.</li>
+		<li>DataSilos has been fully tested with Zurich.</li>	
+		<li>The DataSilos Extension Point now supports the AccessAnalysis() function - this allows an extension app to modify the explanation to be displayed when using the "DataSilos Access Analysis" UI Action.</li>
+		<li>AppBuilderDataSilos() now adds more boilerplate code to the DataSilosGetRelatedRecords() function.</li>
+		<li>Fixed a defect in MaintenanceDatabaseViews() that would cause the execution to fail if no columns are defined for instance access on a table that is part of a database view that has defined fields.</li>
+		<li>Status page now also contains links to Maintenance Jobs.</li> 
+		<li>Status page now also contains links to Data Policies.</li> 
+		<li>Added ACL for DataSilosClientAPI Script Include.</li>
+		<li>GetSecurityClearanceFromUser() is now accessible from all scopes.</li>
+		<li>Added ATF test for GetSecurityClearanceFromUser().</li>
+		<li>GetTableWhitelistTriggerFields() is now accessible from all scopes.</li>
+		<li>Added ATF test for GetTableWhitelistTriggerFields().</li>
+		<li>RecordUpdateWhitelistsFromGroupByTypes() is now accessible from all scopes.</li>
+		<li>Added ATF test for RecordUpdateWhitelistsFromGroupByTypes().</li>
+		<li>Added ATF test for IsUserSentinel().</li>
+		<li>Added table of contents to manual.</li>
+		<li>An application that extends DataSilos capabilities is now called a "DataSilos Extension Application".</li>
+		<li>Renamed chapter "Extension of Scope" to "Building DataSilos Extension Applications" in the manual.</li>
+		<li>Improved chapter "Building DataSIlos Extension Applications" in manual.</li>
+		<li>Replaced all use of deprecated IsValidFunction() by IsFunction().</li>
+	</ol>
+
 
 	<h3>4.1.0 - 2025-07-08</h3>
 	<ol>
@@ -716,7 +747,7 @@ DataSilos - incident_task - cross-silo
 		<li>Functions PrepareQuery(), RecordCheckFilter() and RecordCheckAccess() no longer default to the current users if no or an invalid user id is provided.</li>
 		<li>AppBuilder() now considers tables that are in the scope of the application.</li>
 		<li>The "Start" page has been renamed to "Manual".</li>
-		<li>The label of the field storing a user's security clearance level has been renamed to "User Security Clearance" - otherwise one could confuse it with the field the stores the security clearance level of the record itself - if a plugin supports filtering the sys_user table.</li>
+		<li>The label of the field storing a user's security clearance level has been renamed to "User Security Clearance" - otherwise one could confuse it with the field the stores the security clearance level of the record itself - if a DataSilos Extension Application supports filtering the sys_user table.</li>
 		<li>The group filter is now considered in the "Analysis" and "User Stories" chapters in the manual.</li>
 	</ol>
 
@@ -736,7 +767,7 @@ DataSilos - incident_task - cross-silo
 		<li>DevTools 1.30.0 is now required.</li> 
 		<li>A new scheduled job collects status information and stores it in the new status table. The status page displays the status information from the status table if possible which reduces load time of the status page to a minimum.</li>
 		<li>Added UI Action "DataSilos Maintenance" to trigger the update of a record's visibility configuration manually.</li>
-		<li>GetRelatedRecords() now checks if the records returned from plugins are valid - thus preventing errors caused by invalid records.</li>
+		<li>GetRelatedRecords() now checks if the records returned from DataSilos Extension Applications are valid - thus preventing errors caused by invalid records.</li>
 		<li>A regression defect caused the test step configuration "DataSilos - Implementation" not to be cross-scope-aware. This has been fixed.</li>
 		<li>An unintendedly created table has been removed from the app.</li>
 		<li>The function RecordInsert() in the example implementation of the DataSilos extension point was incorrectly named RecordInitialize(). This has been fixed.</li> 
@@ -895,7 +926,7 @@ while (grSSA.next())
 		<li>The warning message on the ACL form is now displayed in red (instead of blue).</li> 
 		<li>Extended test "DataSilos - Test data sanity" to cover all supported tables.</li>
 		<li>Extended test step configuration to check for a table specific test step in test "DataSilos - Test data sanity".</li>
-		<li>Extended test step configuration "DataSilos - Check table implementation" to support table implementations in other application scopes. That is a first step to enable scoped apps to serve as DataSilos plugins.</li>
+		<li>Extended test step configuration "DataSilos - Check table implementation" to support table implementations in other application scopes. That is a first step to enable scoped apps to serve as DataSilos Extension Applications.</li>
 		<li>Extended test step configuration "DataSilos - Check table implementation" to check if there is a test step to check if ACLs have been properly configured for a supported table.</li>
 		<li>Extended test step configuration "DataSilos - Check table implementation" to check if there is a test step to check the configuration of cross scope access for a supported table.</li>
 		<li>Extended test step configuration "DataSilos - Check table implementation" to check for the new "Last Maintenance" field in each table.</li>
@@ -1046,14 +1077,14 @@ while (grSSA.next())
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-07 13:52:45</sys_created_on>
         <sys_id>1c4102d5db889c50ba15a353059619a2</sys_id>
-        <sys_mod_count>745</sys_mod_count>
+        <sys_mod_count>770</sys_mod_count>
         <sys_name>manual</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_ui_page_1c4102d5db889c50ba15a353059619a2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-07-08 08:27:11</sys_updated_on>
+        <sys_updated_on>2025-09-15 14:22:04</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>1c4102d5db889c50ba15a353059619a2</id>

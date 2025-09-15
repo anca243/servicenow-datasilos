@@ -17,7 +17,7 @@ The identification of related records is supported for the tables natively suppo
 	var IsValidRecord = x_snc_devtools.IsValidRecord;
 	var RenderValue = x_snc_devtools.RenderValue;
 	var IsArray = x_snc_devtools.IsArray;
-	var IsValidFunction = x_snc_devtools.IsValidFunction;
+	var IsFunction = x_snc_devtools.IsFunction;
 
 	var aRelatedRecords = [];
 	
@@ -32,7 +32,7 @@ The identification of related records is supported for the tables natively suppo
 	for (var nEP = eps.length-1; nEP >= 0; nEP--)
 	{
 		var ep = eps[nEP];
-		if (IsValidFunction(ep.GetRelatedRecords))
+		if (IsFunction(ep.GetRelatedRecords))
 		{
 			var aMoreRelatedRecords = ep.GetRelatedRecords(record);
 			if (IsArray(aMoreRelatedRecords) == true)
@@ -178,13 +178,25 @@ The identification of related records is supported for the tables natively suppo
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-29 09:13:13</sys_created_on>
         <sys_id>3d55d258db209410ba15a353059619af</sys_id>
-        <sys_mod_count>30</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>GetRelatedRecords</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_3d55d258db209410ba15a353059619af</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:35</sys_updated_on>
+        <sys_updated_on>2025-08-11 07:52:56</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>3d55d258db209410ba15a353059619af</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-11 07:52:56</sys_created_on>
+        <sys_id>e1af8d2593d32210959b7fda2bba1008</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-11 07:52:56</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

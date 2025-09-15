@@ -278,5 +278,6 @@ DataSilosTestDataAPI.prototype = Object.extendsObject(x_snc_devtools.TestDataAPI
         <sys_update_name>sys_script_include_5b9580191b781810a89720a8ec4bcbfc</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2025-05-02 14:17:36</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
 </record_update>

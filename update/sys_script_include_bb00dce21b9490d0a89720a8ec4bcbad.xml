@@ -13,7 +13,7 @@
 {
 	var RenderValue = x_snc_devtools.RenderValue;
 	var IsValidRecord = x_snc_devtools.IsValidRecord;
-	var IsValidFunction = x_snc_devtools.IsValidFunction;
+	var IsFunction = x_snc_devtools.IsFunction;
 
 	
 	if (IsValidRecord(record) == false)
@@ -30,7 +30,7 @@
 	for (var nEP = 0; nEP < eps.length; nEP++)
 	{
 		var ep = eps[nEP];
-		if (IsValidFunction(ep.RecordUpdate))
+		if (IsFunction(ep.RecordUpdate))
 		{
 			if (ep.RecordUpdate(record) == true)
 			{
@@ -69,13 +69,25 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-23 13:00:48</sys_created_on>
         <sys_id>bb00dce21b9490d0a89720a8ec4bcbad</sys_id>
-        <sys_mod_count>74</sys_mod_count>
+        <sys_mod_count>75</sys_mod_count>
         <sys_name>RecordUpdate</sys_name>
         <sys_package display_value="DataSilos" source="x_snc_datasilos">dafbffebdbb78450ba15a353059619eb</sys_package>
         <sys_policy/>
         <sys_scope display_value="DataSilos">dafbffebdbb78450ba15a353059619eb</sys_scope>
         <sys_update_name>sys_script_include_bb00dce21b9490d0a89720a8ec4bcbad</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-02 14:17:39</sys_updated_on>
+        <sys_updated_on>2025-08-11 07:54:09</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>bb00dce21b9490d0a89720a8ec4bcbad</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-11 07:54:08</sys_created_on>
+        <sys_id>5bef456593d32210959b7fda2bba101b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-11 07:54:08</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>
